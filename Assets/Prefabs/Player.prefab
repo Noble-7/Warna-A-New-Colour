@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5810813161374896941}
   - component: {fileID: 5810813161374896939}
   - component: {fileID: 5810813161374896940}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: DustLand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 5810813161693949315}
   - component: {fileID: 5810813161693949316}
   - component: {fileID: 5810813161693949317}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4921,7 +4921,7 @@ GameObject:
   - component: {fileID: 5810813161822439374}
   - component: {fileID: 5810813161822439375}
   - component: {fileID: 5810813161822439372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -4995,11 +4995,15 @@ MonoBehaviour:
   movementControl: {fileID: -4551910679324362294, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
   jumpControl: {fileID: 2958486450247847431, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
   openRadialMenuControls: {fileID: 0}
+  abilityControls: {fileID: 0}
   jumpAudio: {fileID: 8300000, guid: d15973bcd948bf1489d1b21e50cf49bd, type: 3}
   landAudio: {fileID: 8300000, guid: 4f1d481d676bf684a9b40174df0c02d4, type: 3}
   audioSource: {fileID: 5810813161822439372}
   landDust: {fileID: 5810813161374896939}
   index: 0
+  dianaDialogue: {fileID: 0}
+  bullet: {fileID: 7563908379685718485, guid: 8bb9915311604834a81852b45c62064d, type: 3}
+  bulletSpeed: 700
 --- !u!82 &5810813161822439372
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5105,7 +5109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5810813162031654112}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5139,7 +5143,7 @@ GameObject:
   - component: {fileID: 5810813163350937192}
   - component: {fileID: 5810813163350937193}
   - component: {fileID: 5810813163350937194}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: nose
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5236,7 +5240,7 @@ GameObject:
   - component: {fileID: 5810813163359307971}
   - component: {fileID: 5810813163359307972}
   - component: {fileID: 5810813163359307973}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Capsule
   m_TagString: Player
   m_Icon: {fileID: 0}

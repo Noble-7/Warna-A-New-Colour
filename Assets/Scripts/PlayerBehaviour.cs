@@ -32,6 +32,8 @@ public class PlayerBehaviour : MonoBehaviour
     private InputActionReference jumpControl;
     [SerializeField]
     private InputActionReference openRadialMenuControls;
+    [SerializeField]
+    private InputActionReference abilityControls;
 
     public AudioClip jumpAudio;
     public AudioClip landAudio;
@@ -47,12 +49,16 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Canvas dianaDialogue;
 
+    public GameObject bullet;
+    public float bulletSpeed = 100f;
+
 
     private void OnEnable()
     {
         movementControl.action.Enable();
         jumpControl.action.Enable();
         openRadialMenuControls.action.Enable();
+        abilityControls.action.Enable();
     }
 
     private void OnDisable()
@@ -60,6 +66,8 @@ public class PlayerBehaviour : MonoBehaviour
         movementControl.action.Disable();
         jumpControl.action.Disable();
         openRadialMenuControls.action.Disable();
+        abilityControls.action.Disable();
+
     }
 
     // Start is called before the first frame update
@@ -79,6 +87,7 @@ public class PlayerBehaviour : MonoBehaviour
             movementControl.action.Disable();
             jumpControl.action.Disable();
             openRadialMenuControls.action.Disable();
+            abilityControls.action.Disable();
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.Confined;
             Time.timeScale = 0.1f;
@@ -88,6 +97,7 @@ public class PlayerBehaviour : MonoBehaviour
             movementControl.action.Enable();
             jumpControl.action.Enable();
             openRadialMenuControls.action.Enable();
+            abilityControls.action.Enable();
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
@@ -122,6 +132,16 @@ public class PlayerBehaviour : MonoBehaviour
             controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
 
 
+            
+        }
+
+        if(index == 1 && abilityControls.action.triggered)
+        {
+            GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(cam.rotation.eulerAngles)) as GameObject;
+            Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
+            instBulletRigidBody.AddForce(cam.forward * bulletSpeed);
+            Debug.Log(cam.forward);
+            Destroy(instBullet, 3.0f);
             
         }
 

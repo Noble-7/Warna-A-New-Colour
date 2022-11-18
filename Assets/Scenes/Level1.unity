@@ -384,7 +384,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427736273}
-  m_LocalRotation: {x: 0.016842477, y: -0.16664156, z: 0.0028468845, w: 0.9858696}
+  m_LocalRotation: {x: 0.016842477, y: -0.1666416, z: 0.0028468845, w: 0.9858696}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2135,6 +2135,10 @@ PrefabInstance:
       propertyPath: dianaDialogue
       value: 
       objectReference: {fileID: 428758757}
+    - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: abilityControls
+      value: 
+      objectReference: {fileID: 5371956604147362617, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
     - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
       propertyPath: groundMask.m_Bits
       value: 8

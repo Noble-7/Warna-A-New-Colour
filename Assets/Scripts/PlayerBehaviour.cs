@@ -24,12 +24,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Transform cam;
 
-    
+    public GameObject radialMenu;
 
     [SerializeField]
     private InputActionReference movementControl;
     [SerializeField]
     private InputActionReference jumpControl;
+    [SerializeField]
+    private InputActionReference openRadialMenuControls;
 
     public AudioClip jumpAudio;
     public AudioClip landAudio;
@@ -39,17 +41,23 @@ public class PlayerBehaviour : MonoBehaviour
 
     public ParticleSystem landDust;
 
+    public int index = 0;
+
+    private bool hasDoubleJumped = false;
+
 
     private void OnEnable()
     {
         movementControl.action.Enable();
         jumpControl.action.Enable();
+        openRadialMenuControls.action.Enable();
     }
 
     private void OnDisable()
     {
         movementControl.action.Disable();
         jumpControl.action.Disable();
+        openRadialMenuControls.action.Disable();
     }
 
     // Start is called before the first frame update
@@ -58,6 +66,7 @@ public class PlayerBehaviour : MonoBehaviour
         controller = GetComponent<CharacterController>();
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+        index = 0;
         
     }
 
@@ -100,6 +109,13 @@ public class PlayerBehaviour : MonoBehaviour
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
             audioSource.PlayOneShot(jumpAudio);
+
+        }
+        if (jumpControl.action.triggered && index == 2 && !hasDoubleJumped && !isGrounded)
+        {
+            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+            audioSource.PlayOneShot(jumpAudio);
+            hasDoubleJumped = true;
         }
 
         // gravity
@@ -114,9 +130,20 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 audioSource.PlayOneShot(landAudio);
                 StartCoroutine(PlayDust());
+                hasDoubleJumped = false;
             }
         }
 
+        if (openRadialMenuControls.action.triggered)
+        {
+            movementControl.action.Disable();
+            jumpControl.action.Disable();
+            radialMenu.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Time.timeScale = 0.1f;
+            
+        }
 
     }
 

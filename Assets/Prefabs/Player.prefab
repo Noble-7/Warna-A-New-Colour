@@ -4991,12 +4991,15 @@ MonoBehaviour:
   isGrounded: 0
   controller: {fileID: 5810813161822439374}
   cam: {fileID: 0}
+  radialMenu: {fileID: 0}
   movementControl: {fileID: -4551910679324362294, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
   jumpControl: {fileID: 2958486450247847431, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
+  openRadialMenuControls: {fileID: 0}
   jumpAudio: {fileID: 8300000, guid: d15973bcd948bf1489d1b21e50cf49bd, type: 3}
   landAudio: {fileID: 8300000, guid: 4f1d481d676bf684a9b40174df0c02d4, type: 3}
   audioSource: {fileID: 5810813161822439372}
   landDust: {fileID: 5810813161374896939}
+  index: 2
 --- !u!82 &5810813161822439372
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5283,7 +5286,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e1ccb31832c7ce24ba24d1980a726524, type: 2}
+  - {fileID: 2100000, guid: f5d67fc1e1f7a74408fb3fb324783df3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

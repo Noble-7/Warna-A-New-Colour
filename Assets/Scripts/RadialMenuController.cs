@@ -105,51 +105,26 @@ public class RadialMenuController : MonoBehaviour
                         //Run purple code
                         player.index = 3;
                         playerColour.material = Purple;
-                        movementControl.action.Enable();
-                        jumpControl.action.Enable();
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Time.timeScale = 1.0f;
                         break;
                     case 1:
                         //Run red code
                         player.index = 1;
                         playerColour.material = Red;
-                        movementControl.action.Enable();
-                        jumpControl.action.Enable();
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Time.timeScale = 1.0f;
                         break;
                     case 2:
                         //Run grey code
                         player.index = 0;
                         playerColour.material = Grey;
-                        movementControl.action.Enable();
-                        jumpControl.action.Enable();
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Time.timeScale = 1.0f;
                         break;
                     case 3:
                         //Run green code
                         player.index = 4;
                         playerColour.material = Green;
-                        movementControl.action.Enable();
-                        jumpControl.action.Enable();
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Time.timeScale = 1.0f;
                         break;
                     case 4:
                         //Run blue code
                         player.index = 2;
                         playerColour.material = Blue;
-                        movementControl.action.Enable();
-                        jumpControl.action.Enable();
-                        Cursor.visible = false;
-                        Cursor.lockState = CursorLockMode.Locked;
-                        Time.timeScale = 1.0f;
                         break;
                 }
 

@@ -45,6 +45,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     private bool hasDoubleJumped = false;
 
+    public Canvas dianaDialogue;
+
 
     private void OnEnable()
     {
@@ -64,8 +66,7 @@ public class PlayerBehaviour : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+
         index = 0;
         
     }
@@ -73,6 +74,26 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (dianaDialogue.isActiveAndEnabled || radialMenu.gameObject.activeInHierarchy)
+        {
+            movementControl.action.Disable();
+            jumpControl.action.Disable();
+            openRadialMenuControls.action.Disable();
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.Confined;
+            Time.timeScale = 0.1f;
+        }
+        else
+        {
+            movementControl.action.Enable();
+            jumpControl.action.Enable();
+            openRadialMenuControls.action.Enable();
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            Time.timeScale = 1f;
+        }
+       
+
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 
         if (isGrounded && velocity.y < 0)
@@ -143,16 +164,6 @@ public class PlayerBehaviour : MonoBehaviour
             maxSpeed = 10.0f;
         }
 
-        if (openRadialMenuControls.action.triggered)
-        {
-            movementControl.action.Disable();
-            jumpControl.action.Disable();
-            radialMenu.SetActive(true);
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            Time.timeScale = 0.1f;
-            
-        }
 
     }
 

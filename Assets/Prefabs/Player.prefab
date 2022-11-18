@@ -4999,7 +4999,7 @@ MonoBehaviour:
   landAudio: {fileID: 8300000, guid: 4f1d481d676bf684a9b40174df0c02d4, type: 3}
   audioSource: {fileID: 5810813161822439372}
   landDust: {fileID: 5810813161374896939}
-  index: 2
+  index: 0
 --- !u!82 &5810813161822439372
 AudioSource:
   m_ObjectHideFlags: 0

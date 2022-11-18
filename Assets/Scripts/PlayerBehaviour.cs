@@ -134,6 +134,15 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
+        if (index == 3)
+        {
+            maxSpeed = 15.0f;
+        }
+        else
+        {
+            maxSpeed = 10.0f;
+        }
+
         if (openRadialMenuControls.action.triggered)
         {
             movementControl.action.Disable();

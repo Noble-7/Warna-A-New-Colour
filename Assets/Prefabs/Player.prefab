@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5810813161374896941
 Transform:
   m_ObjectHideFlags: 0
@@ -4991,7 +4991,6 @@ MonoBehaviour:
   isGrounded: 0
   controller: {fileID: 5810813161822439374}
   cam: {fileID: 0}
-  text: {fileID: 0}
   movementControl: {fileID: -4551910679324362294, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
   jumpControl: {fileID: 2958486450247847431, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
   jumpAudio: {fileID: 8300000, guid: d15973bcd948bf1489d1b21e50cf49bd, type: 3}

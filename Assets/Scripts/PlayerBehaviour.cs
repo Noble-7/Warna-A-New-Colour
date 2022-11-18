@@ -19,12 +19,11 @@ public class PlayerBehaviour : MonoBehaviour
     public float groundRadius = 0.5f;
     public LayerMask groundMask;
     public bool isGrounded;
-
+     
     public CharacterController controller;
 
     public Transform cam;
 
-    public TextMeshProUGUI text;
     
 
     [SerializeField]
@@ -56,8 +55,9 @@ public class PlayerBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //controller = GetComponent<CharacterController>();
-        //text = GetComponent<TextMeshProUGUI>();
+        controller = GetComponent<CharacterController>();
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         
     }
 
@@ -117,14 +117,13 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
 
-        text.text = controller.transform.position.ToString();
 
     }
 
     IEnumerator PlayDust()
     {
         landDust.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
         landDust.gameObject.SetActive(false);
 
 

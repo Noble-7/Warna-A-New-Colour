@@ -4983,7 +4983,7 @@ MonoBehaviour:
   jumpHeight: 3
   velocity: {x: 0, y: 0, z: 0}
   turnSmoothTime: 0.1
-  groundCheck: {fileID: 0}
+  groundCheck: {fileID: 5810813162031654112}
   groundRadius: 0.5
   groundMask:
     serializedVersion: 2
@@ -4992,12 +4992,12 @@ MonoBehaviour:
   controller: {fileID: 5810813161822439374}
   cam: {fileID: 0}
   text: {fileID: 0}
-  movementControl: {fileID: 0}
-  jumpControl: {fileID: 0}
-  jumpAudio: {fileID: 0}
-  landAudio: {fileID: 0}
-  audioSource: {fileID: 0}
-  landDust: {fileID: 0}
+  movementControl: {fileID: -4551910679324362294, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
+  jumpControl: {fileID: 2958486450247847431, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
+  jumpAudio: {fileID: 8300000, guid: d15973bcd948bf1489d1b21e50cf49bd, type: 3}
+  landAudio: {fileID: 8300000, guid: 4f1d481d676bf684a9b40174df0c02d4, type: 3}
+  audioSource: {fileID: 5810813161822439372}
+  landDust: {fileID: 5810813161374896939}
 --- !u!82 &5810813161822439372
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5284,7 +5284,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f7f9d14020758f5428b5d407906b89ba, type: 2}
+  - {fileID: 2100000, guid: e1ccb31832c7ce24ba24d1980a726524, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

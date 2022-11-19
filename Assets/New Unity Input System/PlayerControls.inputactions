@@ -70,7 +70,7 @@
                 },
                 {
                     "name": "MousePosition",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "e8ca6821-fdd2-4300-9f4b-064559cd6256",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -332,22 +332,22 @@
                 },
                 {
                     "name": "",
-                    "id": "9e5bda35-750c-4200-9ded-b6e6de8ec10b",
-                    "path": "<Mouse>/position",
+                    "id": "87d51ec3-0aa0-47ba-98cb-303b2632ea36",
+                    "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard and Mouse",
+                    "groups": "Controller",
                     "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "87d51ec3-0aa0-47ba-98cb-303b2632ea36",
-                    "path": "<Gamepad>/rightStick",
+                    "id": "9e5bda35-750c-4200-9ded-b6e6de8ec10b",
+                    "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Controller",
+                    "groups": "Keyboard and Mouse",
                     "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false

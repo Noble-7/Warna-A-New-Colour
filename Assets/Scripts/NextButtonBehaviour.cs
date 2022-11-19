@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class NextButtonBehaviour : MonoBehaviour
 {
@@ -18,9 +19,31 @@ public class NextButtonBehaviour : MonoBehaviour
 
     public Canvas canvasRef;
 
+    [SerializeField]
+    private InputActionReference selectControl;
+
     private void OnEnable()
     {
         //index = 0;
+    }
+
+    public void Update()
+    {
+        if (selectControl.action.triggered)
+        {
+
+
+            index++;
+            if (index > dialogue1.Length - 1 || index > dianaHead.Length - 1)
+            {
+                canvasRef.gameObject.SetActive(false);
+            }
+            else
+            {
+                dianalogueRef.text = dialogue1[index];
+                dianaRef.texture = dianaHead[index];
+            }
+        }
     }
 
     public void onClick()

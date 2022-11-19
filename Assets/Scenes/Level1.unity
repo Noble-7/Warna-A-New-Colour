@@ -1975,7 +1975,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Next
+  m_text: Click or press A to continue
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1984,8 +1984,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
+  m_enableWordWrapping: 0
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
   m_linkedTextComponent: {fileID: 0}
@@ -2306,11 +2306,11 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0, g: 0.6912031, b: 1, a: 1}
-    m_HighlightedColor: {r: 0, g: 0.7530308, b: 1, a: 1}
-    m_PressedColor: {r: 0.059763268, g: 0.5759193, b: 0.745283, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_NormalColor: {r: 0, g: 0.6912031, b: 1, a: 0}
+    m_HighlightedColor: {r: 0, g: 0.7530308, b: 1, a: 0}
+    m_PressedColor: {r: 0.059763268, g: 0.5759193, b: 0.745283, a: 0}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2328,19 +2328,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2035475692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2035475694}
-        m_TargetAssemblyTypeName: NextButtonBehaviour, Assembly-CSharp
-        m_MethodName: onClick
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2035475692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2408,6 +2396,7 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 5825bbf3d953c3c49bdc31b682a31430, type: 3}
   dianaRef: {fileID: 1776430276}
   canvasRef: {fileID: 428758757}
+  selectControl: {fileID: 6941978652275511562, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
 --- !u!1001 &2046607175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2415,6 +2404,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1642176469024888427, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1681576035}
+    - target: {fileID: 1642176469024888427, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: m_UIInputModule
+      value: 
+      objectReference: {fileID: 1275642144}
+    - target: {fileID: 1642176469024888427, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: m_NotificationBehavior
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5810813161374896939, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
       propertyPath: ShapeModule.angle
       value: 90

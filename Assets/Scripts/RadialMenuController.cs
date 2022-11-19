@@ -68,7 +68,7 @@ public class RadialMenuController : MonoBehaviour
             moveInput.y = mousePositionControl.action.ReadValue<Vector2>().y - (Screen.height / 2.0f);
             moveInput.Normalize();
 
-            //Debug.Log(moveInput);
+            Debug.Log(moveInput);
 
             if(moveInput != Vector2.zero)
             {

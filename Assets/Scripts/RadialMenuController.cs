@@ -51,7 +51,7 @@ public class RadialMenuController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("Radial Menu Start");
+        //Debug.Log("Radial Menu Start");
     }
 
     // Update is called once per frame
@@ -68,7 +68,7 @@ public class RadialMenuController : MonoBehaviour
             moveInput.y = mousePositionControl.action.ReadValue<Vector2>().y - (Screen.height / 2.0f);
             moveInput.Normalize();
 
-            Debug.Log(moveInput);
+            //Debug.Log(moveInput);
 
             if(moveInput != Vector2.zero)
             {

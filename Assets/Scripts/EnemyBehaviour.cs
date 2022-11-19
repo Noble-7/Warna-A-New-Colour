@@ -12,6 +12,7 @@ namespace PathCreation.Examples
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
+        public int health = 100;
 
         void Start()
         {
@@ -30,6 +31,11 @@ namespace PathCreation.Examples
                 transform.position = pathCreator.path.GetPointAtDistance(distanceTravelled, endOfPathInstruction);
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
+
+            if(health <= 0.0f)
+            {
+                Destroy(this.gameObject);
+            }
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
@@ -37,6 +43,17 @@ namespace PathCreation.Examples
         void OnPathChanged()
         {
             distanceTravelled = pathCreator.path.GetClosestDistanceAlongPath(transform.position);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+           
+            if (other.CompareTag("Bullet"))
+            {
+                
+                health -= other.GetComponent<BulletBehaviour>().damage;
+                Destroy(other.gameObject);
+            }
         }
     }
 }

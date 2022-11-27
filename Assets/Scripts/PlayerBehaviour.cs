@@ -19,7 +19,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float groundRadius = 0.5f;
     public LayerMask groundMask;
     public bool isGrounded;
-     
+
     public CharacterController controller;
 
     public Transform cam;
@@ -83,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
         controller = GetComponent<CharacterController>();
 
         index = 0;
-        
+
     }
 
     // Update is called once per frame
@@ -111,7 +111,7 @@ public class PlayerBehaviour : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Time.timeScale = 1f;
         }
-       
+
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
 
@@ -125,14 +125,15 @@ public class PlayerBehaviour : MonoBehaviour
         float horizontal = movementControl.action.ReadValue<Vector2>().x;
         float vertical = movementControl.action.ReadValue<Vector2>().y;
 
-        
+
 
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
+        //look around
         if (direction.magnitude >= 0.1f && !isGrappling)
         {
-            
+
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
@@ -141,10 +142,11 @@ public class PlayerBehaviour : MonoBehaviour
             controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
 
 
-            
+
         }
 
-        if(index == 1 && abilityControls.action.triggered)
+        //shootin
+        if (index == 1 && abilityControls.action.triggered)
         {
             GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
 
@@ -153,7 +155,7 @@ public class PlayerBehaviour : MonoBehaviour
             instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
             //Debug.Log(cam.forward);
             Destroy(instBullet, 3.0f);
-            
+
         }
 
         // jumping
@@ -177,11 +179,11 @@ public class PlayerBehaviour : MonoBehaviour
             controller.Move(velocity * Time.deltaTime);
         }
 
-        if(isGrounded != check)
+        if (isGrounded != check)
         {
             check = isGrounded;
 
-            if(isGrounded == true)
+            if (isGrounded == true)
             {
                 audioSource.PlayOneShot(landAudio);
                 StartCoroutine(PlayDust());
@@ -209,5 +211,7 @@ public class PlayerBehaviour : MonoBehaviour
 
 
     }
+
+  
 }
 

@@ -55,6 +55,8 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject bullet;
     public float bulletSpeed = 100f;
 
+    public bool isGrappling = false;
+
 
     private void OnEnable()
     {
@@ -128,7 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
+        if (direction.magnitude >= 0.1f && !isGrappling)
         {
             
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -146,7 +148,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
 
-            Debug.Log(cam.rotation.y);
+            //Debug.Log(cam.rotation.y);
             Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
             instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
             //Debug.Log(cam.forward);
@@ -168,9 +170,12 @@ public class PlayerBehaviour : MonoBehaviour
             hasDoubleJumped = true;
         }
 
-        // gravity
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        if (!isGrappling)
+        {
+            // gravity
+            velocity.y += gravity * Time.deltaTime;
+            controller.Move(velocity * Time.deltaTime);
+        }
 
         if(isGrounded != check)
         {

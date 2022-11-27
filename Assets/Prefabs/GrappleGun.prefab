@@ -249,5 +249,5 @@ MonoBehaviour:
   camera: {fileID: 0}
   player: {fileID: 0}
   grapplinGun: {fileID: 8947065470294608170}
-  index: 0
+  playerRef: {fileID: 0}
   swingingControls: {fileID: 5371956604147362617, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}

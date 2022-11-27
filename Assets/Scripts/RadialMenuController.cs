@@ -69,7 +69,7 @@ public class RadialMenuController : MonoBehaviour
             moveInput.y = mousePositionControl.action.ReadValue<Vector2>().y - (Screen.height / 2.0f);
             moveInput.Normalize();
 
-            Debug.Log(moveInput);
+            //Debug.Log(moveInput);
 
             if(moveInput != Vector2.zero)
             {
@@ -105,31 +105,26 @@ public class RadialMenuController : MonoBehaviour
                     case 0:
                         //Run purple code
                         player.index = 3;
-                        swinging.index = 3;
                         playerColour.material = Purple;
                         break;
                     case 1:
                         //Run red code
                         player.index = 1;
-                        swinging.index = 1;
                         playerColour.material = Red;
                         break;
                     case 2:
                         //Run grey code
                         player.index = 0;
-                        swinging.index = 0;
                         playerColour.material = Grey;
                         break;
                     case 3:
                         //Run green code
                         player.index = 4;
-                        swinging.index = 4;
                         playerColour.material = Green;
                         break;
                     case 4:
                         //Run blue code
                         player.index = 2;
-                        swinging.index = 2;
                         playerColour.material = Blue;
                         break;
                 }

@@ -15,31 +15,35 @@ public class Swinging : MonoBehaviour
     private SpringJoint joint;
     public GameObject grapplinGun;
 
-    public int index = 0;
+    public PlayerBehaviour playerRef;
 
     [SerializeField]
     private InputActionReference swingingControls;
 
     void Awake()
     {
-        lr = GetComponent<LineRenderer>();
-        grapplinGun = GetComponent<GameObject>();
+        lr = GetComponentInChildren<LineRenderer>();
+        //grapplinGun = GetComponent<GameObject>();
+        //playerRef = GetComponent<PlayerBehaviour>();
     }
 
     void Update()
     {
-        if (index == 4 && swingingControls.action.triggered)
+        Debug.Log(playerRef.index);
+        
+        if (playerRef.index == 4 && swingingControls.action.triggered)
         {
             StartGrapple();
         }
-        else if (index != 4)
+        else if (playerRef.index != 4)
         {
             StopGrapple();
         }
-
-        if (index == 4)
+        
+        if (playerRef.index == 4)
         {
-            grapplinGun.SetActive(true);
+
+           grapplinGun.SetActive(true);
         }
         else
         {
@@ -61,6 +65,7 @@ public class Swinging : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(camera.position, camera.forward, out hit, maxDistance, whatIsGrappleable))
         {
+            playerRef.isGrappling = true;
             grapplePoint = hit.point;
             joint = player.gameObject.AddComponent<SpringJoint>();
             joint.autoConfigureConnectedAnchor = false;
@@ -88,6 +93,7 @@ public class Swinging : MonoBehaviour
     /// </summary>
     void StopGrapple()
     {
+        playerRef.isGrappling = false;
         lr.positionCount = 0;
         Destroy(joint);
     }

@@ -33,7 +33,7 @@ public class Door : MonoBehaviour
             }
         }
 
-        if (enemyCount <= 0 && transform.position != transform.position + displacement)
+        if (enemyCount <= 0 && interpolateAmount != 1f)
         {
             interpolateAmount = Mathf.Clamp01(interpolateAmount += Time.deltaTime);
 

@@ -31,7 +31,7 @@ public class Swinging : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(playerRef.index);
+        //Debug.Log(playerRef.index);
 
         if (playerRef.index == 4 && swingingControls.action.triggered)
         {

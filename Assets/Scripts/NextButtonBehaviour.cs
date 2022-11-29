@@ -27,6 +27,12 @@ public class NextButtonBehaviour : MonoBehaviour
         //index = 0;
     }
 
+    public void Start()
+    {
+        dianalogueRef.text = dialogue1[index];
+        dianaRef.texture = dianaHead[index];
+    }
+
     public void Update()
     {
         if (selectControl.action.triggered)

@@ -57,6 +57,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool isGrappling = false;
 
+    public bool hasBlue = false;
+    public bool hasRed = false;
+    public bool hasPurple = false;
+    public bool hasGreen = false;
+
+
 
     private void OnEnable()
     {

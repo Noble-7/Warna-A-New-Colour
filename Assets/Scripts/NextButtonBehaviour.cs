@@ -42,6 +42,7 @@ public class NextButtonBehaviour : MonoBehaviour
             index++;
             if (index > dialogue1.Length - 1 || index > dianaHead.Length - 1)
             {
+                Destroy(this);
                 canvasRef.gameObject.SetActive(false);
             }
             else
@@ -57,6 +58,7 @@ public class NextButtonBehaviour : MonoBehaviour
         index++;
         if (index > dialogue1.Length - 1 || index > dianaHead.Length - 1)
         {
+            Destroy(this);
             canvasRef.gameObject.SetActive(false);
         }
         else

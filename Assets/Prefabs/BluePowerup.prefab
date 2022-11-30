@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7155230215797779046}
   - component: {fileID: 7155230215797779045}
   - component: {fileID: 7155230215797779044}
+  - component: {fileID: 7952109016043275892}
   m_Layer: 0
   m_Name: BluePowerup
   m_TagString: Untagged
@@ -98,6 +99,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7952109016043275892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7155230215797779043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae954b1790bf1fc479ad6b985c098a80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue1: []
+  dianalogueRef: {fileID: 0}
+  dianaHead: []
+  dianaRef: {fileID: 0}
+  canvasRef: {fileID: 0}
+  selectControl: {fileID: 6941978652275511562, guid: 759f40bc534bfca47bd1ecbd78c0194f, type: 3}
 --- !u!1001 &8667533462194959773
 PrefabInstance:
   m_ObjectHideFlags: 0

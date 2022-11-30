@@ -12351,6 +12351,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2812356662225406195, guid: 7f90f177fdee9134c913a535530022c9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2812356662225406195, guid: 7f90f177fdee9134c913a535530022c9, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4348392420200516470, guid: 7f90f177fdee9134c913a535530022c9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -18376,6 +18384,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 187538800}
     - target: {fileID: 2226365056401987166, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 2136108425}
+    - target: {fileID: 2226365056401987166, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: radialMenu
       value: 
       objectReference: {fileID: 282296375}
@@ -18473,11 +18485,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638934382727113649, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.06806724
+      value: -0.068067245
       objectReference: {fileID: 0}
     - target: {fileID: 5638934382727113649, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0105177155
+      value: 0.010517717
       objectReference: {fileID: 0}
     - target: {fileID: 5638934382979551749, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalPosition.y
@@ -19668,3 +19680,14 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &2136108425 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2370719673282364680, guid: 7f90f177fdee9134c913a535530022c9, type: 3}
+  m_PrefabInstance: {fileID: 1379888328}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf141ec47179b04eaa88b9724b6b87e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -13,6 +13,7 @@ namespace PathCreation.Examples
         public float speed = 5;
         float distanceTravelled;
         public int health = 50;
+        public int damage = 10;
 
         void Start()
         {

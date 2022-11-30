@@ -7,6 +7,10 @@ using TMPro;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    public int maxHealth = 100;
+    public int currentHealth;
+
+    public HealthBar healthBar;
 
     public float maxSpeed = 10.0f;
     public float gravity = -30.0f;
@@ -90,6 +94,8 @@ public class PlayerBehaviour : MonoBehaviour
 
         index = 0;
 
+        currentHealth = maxHealth;
+        healthBar.setMaxHealth(maxHealth);
     }
 
     // Update is called once per frame
@@ -209,6 +215,14 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            TakeDamage(10);
+        }
+    }
+
     IEnumerator PlayDust()
     {
         landDust.gameObject.SetActive(true);
@@ -216,6 +230,12 @@ public class PlayerBehaviour : MonoBehaviour
         landDust.gameObject.SetActive(false);
 
 
+    }
+
+    void TakeDamage(int damage)
+    {
+        currentHealth -= damage;
+        healthBar.setHealth(currentHealth);
     }
 
   

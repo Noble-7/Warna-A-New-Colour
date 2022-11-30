@@ -30,8 +30,6 @@ public class PlayerBehaviour : MonoBehaviour
 
     public GameObject radialMenu;
 
-    public Rigidbody rb;
-
     [SerializeField]
     private InputActionReference movementControl;
     [SerializeField]
@@ -173,7 +171,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
 
         // jumping
-        if (jumpControl.action.triggered && isGrounded && !isGrappling)
+        if (jumpControl.action.triggered && isGrounded)
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
             audioSource.PlayOneShot(jumpAudio);

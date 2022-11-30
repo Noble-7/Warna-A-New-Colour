@@ -11,16 +11,30 @@ public class Swinging : MonoBehaviour
     private Vector3 grapplePoint;
     public LayerMask whatIsGrappleable;
     public Transform gunTip, camera, player;
-    private float maxDistance = 100f;
+    public float maxDistance = 50f;
     private SpringJoint joint;
     public GameObject grapplinGun;
+    bool isHeld = false; 
+
 
     public PlayerBehaviour playerRef;
     public Transform orientation;
-    public Rigidbody rb;
-
+    [SerializeField]
+    private InputActionReference movementControl;
+    [SerializeField]
+    private InputActionReference boostControl;
     [SerializeField]
     private InputActionReference swingingControls;
+
+    private void OnEnable()
+    {
+
+    }
+    private void OnDisable()
+    {
+
+    }
+
 
     void Awake()
     {
@@ -33,11 +47,11 @@ public class Swinging : MonoBehaviour
     {
         //Debug.Log(playerRef.index);
 
-        if (playerRef.index == 4 && swingingControls.action.triggered)
+        if (playerRef.index == 4 && isHeld == true)
         {
-            StartGrapple();
+            OdmGearMovement();
         }
-        else if (playerRef.index != 4)
+        else if (playerRef.index != 4 || isHeld == false)
         {
             StopGrapple();
         }
@@ -50,6 +64,16 @@ public class Swinging : MonoBehaviour
         else
         {
             grapplinGun.SetActive(false);
+        }
+
+        if (swingingControls.action.triggered && playerRef.index == 4)
+        {
+            StartGrapple();
+            isHeld = true;
+        }
+        else if (swingingControls.action.WasReleasedThisFrame())
+        {
+            isHeld = false;
         }
     }
 
@@ -86,6 +110,9 @@ public class Swinging : MonoBehaviour
 
             lr.positionCount = 2;
             currentGrapplePosition = gunTip.position;
+
+            playerRef.controller.enabled = false;
+
         }
     }
 
@@ -98,6 +125,8 @@ public class Swinging : MonoBehaviour
         playerRef.isGrappling = false;
         lr.positionCount = 0;
         Destroy(joint);
+
+        playerRef.controller.enabled = true;
     }
 
     private Vector3 currentGrapplePosition;
@@ -126,45 +155,49 @@ public class Swinging : MonoBehaviour
     private void OdmGearMovement()
     {
         // right
-        if (Input.GetKey(KeyCode.D))
+        if (movementControl.action.ReadValue<Vector2>().x > 0.1)
         {
-            rb.AddForce(orientation.right * 2000.0f * Time.deltaTime);
-
+            playerRef.rb.AddForce(orientation.right * 2000.0f * Time.deltaTime);
+            Debug.Log("yeehawright");
         }
 
         // left
-        if (Input.GetKey(KeyCode.A))
+        if (movementControl.action.ReadValue<Vector2>().x < 0.1)
         {
-            rb.AddForce(-orientation.right * 2000.0f * Time.deltaTime);
-
+            playerRef.rb.AddForce(-orientation.right * 2000.0f * Time.deltaTime);
+            Debug.Log("yeehawleft");
         }
 
         // forward
-        if (Input.GetKey(KeyCode.W))
+        if (movementControl.action.ReadValue<Vector2>().y > 0.1)
         {
-            rb.AddForce(orientation.forward * 2000.0f * Time.deltaTime);
+            playerRef.rb.AddForce(orientation.forward * 2000.0f * Time.deltaTime);
+            Debug.Log("yeehawforward");
         }
 
         // shorten cable/boost to point
-        if (Input.GetKey(KeyCode.Space))
+        if (boostControl.action.triggered)
         {
             Vector3 directionToPoint = grapplePoint - transform.position;
-            rb.AddForce(directionToPoint.normalized * 2000.0f * Time.deltaTime, ForceMode.Acceleration);
+            playerRef.rb.AddForce(directionToPoint.normalized * 2000.0f* Time.deltaTime, ForceMode.Acceleration);
 
             float distanceFromPoint = Vector3.Distance(transform.position, grapplePoint);
 
             joint.maxDistance = distanceFromPoint * 0.8f;
             joint.minDistance = distanceFromPoint * 0.25f;
+            Debug.Log("yeehawjumpfool");
 
         }
         // extend cable
-        if (Input.GetKey(KeyCode.S))
+        if (movementControl.action.ReadValue<Vector2>().y < 0.1)
         {
             float extendedDistanceFromPoint = Vector3.Distance(transform.position, grapplePoint) + 20.0f;
 
             joint.maxDistance = extendedDistanceFromPoint * 0.8f;
             joint.minDistance = extendedDistanceFromPoint * 0.25f;
+            Debug.Log("yeehawback");
         }
     }
+
 }
 

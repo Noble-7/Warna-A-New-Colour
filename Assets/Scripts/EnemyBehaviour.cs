@@ -12,7 +12,7 @@ namespace PathCreation.Examples
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
-        public int health = 100;
+        public int health = 50;
 
         void Start()
         {

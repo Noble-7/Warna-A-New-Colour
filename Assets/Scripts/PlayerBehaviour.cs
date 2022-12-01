@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class PlayerBehaviour : MonoBehaviour
     public int currentHealth;
 
     public HealthBar healthBar;
+
+    public int kills = 0;
 
     public float maxSpeed = 10.0f;
     public float gravity = -30.0f;
@@ -46,6 +49,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public AudioClip jumpAudio;
     public AudioClip landAudio;
+    public AudioClip healingAudio;
+    public AudioClip shootingAudio;
     public AudioSource audioSource;
 
     private bool check = true;
@@ -163,7 +168,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (index == 1 && abilityControls.action.triggered)
         {
             GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
-
+            audioSource.PlayOneShot(shootingAudio);
             //Debug.Log(cam.rotation.y);
             Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
             instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
@@ -199,7 +204,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (isGrounded == true)
             {
-                audioSource.PlayOneShot(landAudio);
+                //audioSource.PlayOneShot(landAudio);
                 StartCoroutine(PlayDust());
                 hasDoubleJumped = false;
             }
@@ -214,6 +219,12 @@ public class PlayerBehaviour : MonoBehaviour
             maxSpeed = 10.0f;
         }
 
+        if(index == 4 && abilityControls.action.triggered && currentHealth < maxHealth)
+        {
+            currentHealth = maxHealth;
+            audioSource.PlayOneShot(healingAudio);
+            healthBar.setHealth(currentHealth);
+        }
 
     }
 
@@ -222,6 +233,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(10);
+            
         }
     }
 
@@ -238,6 +250,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            SceneManager.LoadScene("LevelDesign");
+        }
     }
 
 

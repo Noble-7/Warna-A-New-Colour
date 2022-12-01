@@ -28,6 +28,9 @@ public class CollectPurple : MonoBehaviour
 
     public Text notCollectedText;
 
+    public AudioSource audioSource;
+    public AudioClip pickupAudio;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,6 +38,7 @@ public class CollectPurple : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("We know it's a player");
+            audioSource.PlayOneShot(pickupAudio);
             canvasRef.gameObject.SetActive(true);
             //playerRef = other.gameObject.GetComponent<PlayerBehaviour>();
             playerRef.hasPurple = true;

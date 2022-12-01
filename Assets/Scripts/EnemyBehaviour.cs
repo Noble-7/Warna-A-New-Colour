@@ -12,8 +12,18 @@ namespace PathCreation.Examples
         public EndOfPathInstruction endOfPathInstruction;
         public float speed = 5;
         float distanceTravelled;
-        public int health = 50;
+        public int maxHealth = 50;
         public int damage = 10;
+        public PlayerBehaviour playerRef;
+        public int currentHealth;
+
+        public HealthBar healthBar;
+
+        public AudioSource audioSource;
+        public AudioClip enemyHitAudio;
+        public AudioClip enemyDeathAudio;
+
+        private bool isDying = false;
 
         void Start()
         {
@@ -22,6 +32,8 @@ namespace PathCreation.Examples
                 // Subscribed to the pathUpdated event so that we're notified if the path changes during the game
                 pathCreator.pathUpdated += OnPathChanged;
             }
+            currentHealth = maxHealth;
+            healthBar.setMaxHealth(maxHealth);
         }
 
         void Update()
@@ -33,10 +45,7 @@ namespace PathCreation.Examples
                 transform.rotation = pathCreator.path.GetRotationAtDistance(distanceTravelled, endOfPathInstruction);
             }
 
-            if(health <= 0.0f)
-            {
-                Destroy(this.gameObject);
-            }
+
         }
 
         // If the path changes during the game, update the distance travelled so that the follower's position on the new path
@@ -51,9 +60,17 @@ namespace PathCreation.Examples
            
             if (other.CompareTag("Bullet"))
             {
-                
-                health -= other.GetComponent<BulletBehaviour>().damage;
+                audioSource.PlayOneShot(enemyHitAudio);
+                currentHealth -= other.GetComponent<BulletBehaviour>().damage;
                 Destroy(other.gameObject);
+                healthBar.setHealth(currentHealth);
+                if (currentHealth <= 0.0f && !isDying)
+                {
+                    playerRef.kills++;
+                    Destroy(this.gameObject, 1.0f);
+                    isDying = true;
+                    audioSource.PlayOneShot(enemyDeathAudio);
+                }
             }
         }
     }

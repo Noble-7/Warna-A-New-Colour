@@ -5,28 +5,32 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
-public class CollectGreen : MonoBehaviour
+public class gameEndScript : MonoBehaviour
 {
+
     public string[] dialogue1;
 
+    //This is the TextMeshPro on the canvas with Diana on it, so NOT the test canvas.
     public TextMeshProUGUI dianalogueRef;
 
     public Texture[] dianaHead;
 
+    //This is the image of Diana in the canvas.
     public RawImage dianaRef;
 
     private int index;
 
+    //This is the canvas, NOT the test canvas.
     public Canvas canvasRef;
 
     private bool Collected = false;
 
+    //This is a reference to the player in the scene.
     public PlayerBehaviour playerRef;
 
     [SerializeField]
     private InputActionReference selectControl;
 
-    public Text notCollectedText;
 
     public AudioSource audioSource;
     public AudioClip pickupAudio;
@@ -41,13 +45,12 @@ public class CollectGreen : MonoBehaviour
             audioSource.PlayOneShot(pickupAudio);
             canvasRef.gameObject.SetActive(true);
             //playerRef = other.gameObject.GetComponent<PlayerBehaviour>();
-            playerRef.hasGreen = true;
+            playerRef.hasBlue = true;
             index = 0;
             dianalogueRef.text = dialogue1[index];
             dianaRef.texture = dianaHead[index];
             Collected = true;
             Time.timeScale = 0.0f;
-            Destroy(notCollectedText);
         }
     }
 

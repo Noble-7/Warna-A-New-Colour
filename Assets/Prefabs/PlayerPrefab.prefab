@@ -110,7 +110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5459042297037886315, guid: a510d0cb7adde704bae42279348f8119, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16514686
+      value: -0.16514684
       objectReference: {fileID: 0}
     - target: {fileID: 5459042297037886315, guid: a510d0cb7adde704bae42279348f8119, type: 3}
       propertyPath: m_LocalRotation.z
@@ -126,11 +126,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5459042297099207369, guid: a510d0cb7adde704bae42279348f8119, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.16552697
+      value: -0.16552696
       objectReference: {fileID: 0}
     - target: {fileID: 5459042297099207369, guid: a510d0cb7adde704bae42279348f8119, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.019451175
+      value: 0.019451173
       objectReference: {fileID: 0}
     - target: {fileID: 5459042297955646333, guid: a510d0cb7adde704bae42279348f8119, type: 3}
       propertyPath: m_LocalPosition.x
@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 36fbda600bb10ca46b85d8330285a713, type: 2}
+    - target: {fileID: 5810813161693949318, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.541
+      objectReference: {fileID: 0}
     - target: {fileID: 5810813161822439360, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
       propertyPath: m_Name
       value: Player
@@ -275,9 +279,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: healingAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 3c1f058423a6df442aa79621f15e7846, type: 3}
+    - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
       propertyPath: dianaDialogue
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
+      propertyPath: shootingAudio
+      value: 
+      objectReference: {fileID: 8300000, guid: 5c42bfff6daf5a34696eb0fceda02f9e, type: 3}
     - target: {fileID: 5810813161822439375, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
       propertyPath: abilityControls
       value: 
@@ -314,7 +326,8 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4128475756803359828, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a15ac67beabe50447a397bfc6a4f03ae, type: 3}
 --- !u!1 &2226365056401987153 stripped
 GameObject:

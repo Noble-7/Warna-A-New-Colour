@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class DoorBehaviour : MonoBehaviour
 {
+    public AudioClip doorOpenAudio;
+    public AudioSource audioSource;
 
     Animator animator;
 
     public bool isOpen = false;
+
+    public PlayerBehaviour playerRef;
+
+    [SerializeField]
+    private int numKillsToOpen;
 
     // Start is called before the first frame update
     void Start()
@@ -25,8 +32,12 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetInteger("AnimState", 1);
-            isOpen = true;
+            if (playerRef.kills >= numKillsToOpen)
+            {
+                animator.SetInteger("AnimState", 1);
+                isOpen = true;
+                audioSource.PlayOneShot(doorOpenAudio);
+            }
         }
     }
 
@@ -34,8 +45,11 @@ public class DoorBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            animator.SetInteger("AnimState", 2);
-            isOpen = false;
+            if (playerRef.kills >= numKillsToOpen)
+            {
+                animator.SetInteger("AnimState", 2);
+                isOpen = false;
+            }
         }
     }
 }

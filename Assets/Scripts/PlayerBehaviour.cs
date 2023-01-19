@@ -252,7 +252,7 @@ public class PlayerBehaviour : MonoBehaviour
         healthBar.setHealth(currentHealth);
         if(currentHealth <= 0)
         {
-            SceneManager.LoadScene("LevelDesign");
+            SceneManager.LoadScene("Loss Screen");
         }
     }
 

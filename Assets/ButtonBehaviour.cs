@@ -19,4 +19,9 @@ public class ButtonBehaviour : MonoBehaviour
     {
         Application.Quit(0);
     }
+
+    public void onReturnClick()
+    {
+        SceneManager.LoadScene("Title Screen");
+    }
 }

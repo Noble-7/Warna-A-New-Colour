@@ -33,6 +33,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public GameObject radialMenu;
 
+    public GameObject pauseMenu;
+
     public Rigidbody rb;
 
     [SerializeField]
@@ -45,6 +47,8 @@ public class PlayerBehaviour : MonoBehaviour
     private InputActionReference abilityControls;
     [SerializeField]
     private InputActionReference cameraControls;
+    [SerializeField]
+    private InputActionReference pauseControls;
 
 
     public AudioClip jumpAudio;
@@ -82,6 +86,8 @@ public class PlayerBehaviour : MonoBehaviour
         openRadialMenuControls.action.Enable();
         abilityControls.action.Enable();
         cameraControls.action.Enable();
+        pauseControls.action.Enable();
+
     }
 
     private void OnDisable()
@@ -91,6 +97,7 @@ public class PlayerBehaviour : MonoBehaviour
         openRadialMenuControls.action.Disable();
         abilityControls.action.Disable();
         cameraControls.action.Disable();
+        pauseControls.action.Disable();
 
     }
 
@@ -108,124 +115,144 @@ public class PlayerBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (dianaDialogue.isActiveAndEnabled || radialMenu.gameObject.activeInHierarchy)
+        if (!pauseMenu.activeInHierarchy)
         {
-            movementControl.action.Disable();
-            jumpControl.action.Disable();
-            openRadialMenuControls.action.Disable();
-            abilityControls.action.Disable();
-            cameraControls.action.Disable();
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.Confined;
-            Time.timeScale = 0.1f;
-        }
-        else
-        {
-            movementControl.action.Enable();
-            jumpControl.action.Enable();
-            openRadialMenuControls.action.Enable();
-            abilityControls.action.Enable();
-            cameraControls.action.Enable();
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Time.timeScale = 1f;
-        }
-
-
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
-
-        if (isGrounded && velocity.y < 0)
-        {
-            velocity.y = -2.0f;
-        }
-
-        // movement
-
-        float horizontal = movementControl.action.ReadValue<Vector2>().x;
-        float vertical = movementControl.action.ReadValue<Vector2>().y;
-
-
-
-
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
-
-        //look around
-        if (direction.magnitude >= 0.1f && !isGrappling)
-        {
-
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
-
-
-
-        }
-
-        //shootin
-        if (index == 1 && abilityControls.action.triggered)
-        {
-            GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
-            audioSource.PlayOneShot(shootingAudio);
-            //Debug.Log(cam.rotation.y);
-            Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
-            instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
-            //Debug.Log(cam.forward);
-            Destroy(instBullet, 3.0f);
-
-        }
-
-        // jumping
-        if (jumpControl.action.triggered && isGrounded && !isGrappling)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
-            audioSource.PlayOneShot(jumpAudio);
-
-        }
-        if (jumpControl.action.triggered && index == 2 && !hasDoubleJumped && !isGrounded)
-        {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
-            audioSource.PlayOneShot(jumpAudio);
-            hasDoubleJumped = true;
-        }
-
-        if (!isGrappling)
-        {
-            // gravity
-            velocity.y += gravity * Time.deltaTime;
-            controller.Move(velocity * Time.deltaTime);
-        }
-
-        if (isGrounded != check)
-        {
-            check = isGrounded;
-
-            if (isGrounded == true)
+            if (dianaDialogue.isActiveAndEnabled || radialMenu.gameObject.activeInHierarchy)
             {
-                //audioSource.PlayOneShot(landAudio);
-                StartCoroutine(PlayDust());
-                hasDoubleJumped = false;
+                movementControl.action.Disable();
+                jumpControl.action.Disable();
+                openRadialMenuControls.action.Disable();
+                abilityControls.action.Disable();
+                cameraControls.action.Disable();
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                Time.timeScale = 0.1f;
+            }
+            else
+            {
+                movementControl.action.Enable();
+                jumpControl.action.Enable();
+                openRadialMenuControls.action.Enable();
+                abilityControls.action.Enable();
+                cameraControls.action.Enable();
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1f;
+            }
+
+
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundRadius, groundMask);
+
+            if (isGrounded && velocity.y < 0)
+            {
+                velocity.y = -2.0f;
+            }
+
+            // movement
+
+            float horizontal = movementControl.action.ReadValue<Vector2>().x;
+            float vertical = movementControl.action.ReadValue<Vector2>().y;
+
+
+
+
+            Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+
+            //look around
+            if (direction.magnitude >= 0.1f && !isGrappling)
+            {
+
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
+
+
+
+            }
+
+            //shootin
+            if (index == 1 && abilityControls.action.triggered)
+            {
+                GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
+                audioSource.PlayOneShot(shootingAudio);
+                //Debug.Log(cam.rotation.y);
+                Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
+                instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
+                //Debug.Log(cam.forward);
+                Destroy(instBullet, 3.0f);
+
+            }
+
+            // jumping
+            if (jumpControl.action.triggered && isGrounded && !isGrappling)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+                audioSource.PlayOneShot(jumpAudio);
+
+            }
+            if (jumpControl.action.triggered && index == 2 && !hasDoubleJumped && !isGrounded)
+            {
+                velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+                audioSource.PlayOneShot(jumpAudio);
+                hasDoubleJumped = true;
+            }
+
+            if (!isGrappling)
+            {
+                // gravity
+                velocity.y += gravity * Time.deltaTime;
+                controller.Move(velocity * Time.deltaTime);
+            }
+
+            if (isGrounded != check)
+            {
+                check = isGrounded;
+
+                if (isGrounded == true)
+                {
+                    //audioSource.PlayOneShot(landAudio);
+                    StartCoroutine(PlayDust());
+                    hasDoubleJumped = false;
+                }
+            }
+
+            if (index == 3)
+            {
+                maxSpeed = 15.0f;
+            }
+            else
+            {
+                maxSpeed = 10.0f;
+            }
+
+            if (index == 4 && abilityControls.action.triggered && currentHealth < maxHealth)
+            {
+                currentHealth = maxHealth;
+                audioSource.PlayOneShot(healingAudio);
+                healthBar.setHealth(currentHealth);
+            }
+
+
+
+        }
+        if (pauseControls.action.triggered)
+        {
+            pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
+            if (pauseMenu.activeInHierarchy)
+            {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
+                Time.timeScale = 0.0f;
+            }
+            else {
+                Cursor.visible = false;
+                Cursor.lockState = CursorLockMode.Locked;
+                Time.timeScale = 1.0f;
             }
         }
-
-        if (index == 3)
-        {
-            maxSpeed = 15.0f;
-        }
-        else
-        {
-            maxSpeed = 10.0f;
-        }
-
-        if(index == 4 && abilityControls.action.triggered && currentHealth < maxHealth)
-        {
-            currentHealth = maxHealth;
-            audioSource.PlayOneShot(healingAudio);
-            healthBar.setHealth(currentHealth);
-        }
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -255,6 +282,8 @@ public class PlayerBehaviour : MonoBehaviour
             SceneManager.LoadScene("Loss Screen");
         }
     }
+
+
 
 
 }

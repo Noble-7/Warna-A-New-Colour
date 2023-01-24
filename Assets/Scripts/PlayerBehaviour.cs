@@ -1,3 +1,4 @@
+//We stan for libraries
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,35 +9,51 @@ using UnityEngine.SceneManagement;
 
 public class PlayerBehaviour : MonoBehaviour
 {
+    //Warna's max health, used mostly for the healing powerup
     public int maxHealth = 100;
+    //Keeps track of the current health. Why did I decide to comment this code.
     public int currentHealth;
 
+    //We have a health bar script so, we need a ref to it. Enemies use this too. You can use this with anything so like destructible environment?
     public HealthBar healthBar;
 
+    //This is for tracking the sliding door in the tutorial level, but in theory we could use this for quests that need kills at one point. Get creative!
     public int kills = 0;
 
+    //Our max speed
     public float maxSpeed = 10.0f;
+    //How quickly warna falls, this only affects her.
     public float gravity = -30.0f;
+    //The height of the jump, we could probably make a powerup involving this
     public float jumpHeight = 3.0f;
+    //Used to track movement with the character controller.
     public Vector3 velocity;
+    //This is stuff for the camera? So that Warna turns smoothly towards the direction we're looking.
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    //The location of the point that we use to verify if Warna is on the ground.
     public Transform groundCheck;
+    //The radius of the sphere for the ground check. The bigger the number, the more generous the ground check.
     public float groundRadius = 0.5f;
+    //The layer that interacts with the ground check.
     public LayerMask groundMask;
+    //Bool used mostly for visual and audio effects.
     public bool isGrounded;
 
+    //We need this for movement, so here it is
     public CharacterController controller;
 
+    //This is needed to let the player know which direction is forward.
     public Transform cam;
-
+    //The menu we use to change colours
     public GameObject radialMenu;
-
+    //The actual pause menu, which since it has no code it sorta has to be a game object for now.
     public GameObject pauseMenu;
-
+    //obligatory rigidbody moment
     public Rigidbody rb;
 
+    //All our input objects, cause yay I guess
     [SerializeField]
     private InputActionReference movementControl;
     [SerializeField]
@@ -50,17 +67,18 @@ public class PlayerBehaviour : MonoBehaviour
     [SerializeField]
     private InputActionReference pauseControls;
 
-
+    //Anytime we have new audio we'll need it in here.
     public AudioClip jumpAudio;
     public AudioClip landAudio;
     public AudioClip healingAudio;
     public AudioClip shootingAudio;
     public AudioSource audioSource;
 
+    //This is for... Something, probably. (I checked, this is essentially a weird subset of isgrounded used for the landDust)
     private bool check = true;
-
+    //This is for when we land, there's a bit of dust that trails off. 
     public ParticleSystem landDust;
-
+    //Extremely important variable, keeps track of which colour we have equipped atm. Could probably turn this into an ENUM for readability.
     public int index = 0;
 
     private bool hasDoubleJumped = false;

@@ -5948,7 +5948,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187538797}
-  m_LocalRotation: {x: -0.007910339, y: 0.9897133, z: -0.12940118, w: -0.060501523}
+  m_LocalRotation: {x: -0.007910331, y: 0.9897133, z: -0.12940118, w: -0.060501453}
   m_LocalPosition: {x: 9.69498, y: -19.677666, z: -85.36262}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -8975,7 +8975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: 0700a1acdcf6b6d4c9a9878a9ea63c7b, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: 0700a1acdcf6b6d4c9a9878a9ea63c7b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8983,7 +8983,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: 0700a1acdcf6b6d4c9a9878a9ea63c7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -21.07
+      value: -21.59
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: 0700a1acdcf6b6d4c9a9878a9ea63c7b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -22518,7 +22518,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh77136
+  m_Name: pb_Mesh52868
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -28357,7 +28357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: bb3c94bdbe43ae24cbcc365946992668, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 7155230215797779047, guid: bb3c94bdbe43ae24cbcc365946992668, type: 3}
       propertyPath: m_LocalPosition.x
@@ -40029,21 +40029,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue1:
   - 'You found Green! '
-  - I'm...
-  - I have no idea what this is supposed to do.
-  - I think the developers ran out of time trying to make it work!
-  - It's a mess!
-  - Who knows, try clicking with it active. Maybe you'll heal or something.
-  - Catch ya later!
+  - This power will enable you to heal your injuries!
+  - Once equipped, use left click to restore your health!
+  - With this new ability, you should be stronger than ever!
   dianalogueRef: {fileID: 1640406674}
   dianaHead:
+  - {fileID: 2800000, guid: 5825bbf3d953c3c49bdc31b682a31430, type: 3}
   - {fileID: 2800000, guid: 83160613f19fa244da438f9d8fee1a51, type: 3}
   - {fileID: 2800000, guid: fb6412bb7180dd249a4dc59ea6acc1dc, type: 3}
-  - {fileID: 2800000, guid: 0db9c0d66ddfea54c8de585612b2a7dd, type: 3}
-  - {fileID: 2800000, guid: 5c3cbf07714ca704d9bef87d3b9c96d6, type: 3}
-  - {fileID: 2800000, guid: c426c769b34fb1d4ea919b6972c7b89a, type: 3}
-  - {fileID: 2800000, guid: 0db9c0d66ddfea54c8de585612b2a7dd, type: 3}
-  - {fileID: 2800000, guid: 83160613f19fa244da438f9d8fee1a51, type: 3}
+  - {fileID: 2800000, guid: 5825bbf3d953c3c49bdc31b682a31430, type: 3}
   dianaRef: {fileID: 1952548508}
   canvasRef: {fileID: 1754477845}
   playerRef: {fileID: 2065569024}
@@ -61161,6 +61155,35 @@ PrefabInstance:
       propertyPath: dianalogueRef
       value: 
       objectReference: {fileID: 1640406674}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dialogue1.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dianaHead.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dialogue1.Array.data[0]
+      value: You finished the tutorial!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dialogue1.Array.data[1]
+      value: I will now end the simulation, and you will be free to embark on your
+        journey!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dialogue1.Array.data[2]
+      value: I'll check in with you soon, good luck!!
+      objectReference: {fileID: 0}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dianaHead.Array.data[1]
+      value: 
+      objectReference: {fileID: 2800000, guid: fb6412bb7180dd249a4dc59ea6acc1dc, type: 3}
+    - target: {fileID: 8156340546162113530, guid: aff785e894594d644831978a93e2264f, type: 3}
+      propertyPath: dianaHead.Array.data[2]
+      value: 
+      objectReference: {fileID: 2800000, guid: 83160613f19fa244da438f9d8fee1a51, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aff785e894594d644831978a93e2264f, type: 3}
 --- !u!1 &1523575405
@@ -74687,11 +74710,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5638934383052407719, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.060501494
+      value: -0.06050146
       objectReference: {fileID: 0}
     - target: {fileID: 5638934383052407719, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.007910335
+      value: -0.007910331
       objectReference: {fileID: 0}
     - target: {fileID: 5638934383052407719, guid: 1d2f9a36e5c93214e8c7413dce5df898, type: 3}
       propertyPath: m_LocalRotation.y

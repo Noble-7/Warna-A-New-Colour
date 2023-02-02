@@ -23,6 +23,9 @@ public class RadialMenuController : MonoBehaviour
 
     public GameObject highlightBlock;
 
+    public AudioSource audioSource;
+    public AudioClip pickupAudio;
+
     [SerializeField]
     private InputActionReference openRadialMenuControls;
     [SerializeField]
@@ -140,6 +143,7 @@ public class RadialMenuController : MonoBehaviour
                             playerColour.material = Blue;
                         }
                         break;
+                        audioSource.PlayOneShot(pickupAudio);
                 }
 
                 theMenu.SetActive(false);

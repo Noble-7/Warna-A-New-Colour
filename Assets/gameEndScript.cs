@@ -27,6 +27,8 @@ public class gameEndScript : MonoBehaviour
 
     //This is a reference to the player in the scene.
     public PlayerBehaviour playerRef;
+    public Material grey;
+    public MeshRenderer playerColour;
 
     [SerializeField]
     private InputActionReference selectControl;
@@ -45,8 +47,11 @@ public class gameEndScript : MonoBehaviour
             audioSource.PlayOneShot(pickupAudio);
             canvasRef.gameObject.SetActive(true);
             //playerRef = other.gameObject.GetComponent<PlayerBehaviour>();
-            playerRef.hasBlue = true;
-            index = 0;
+            playerRef.hasBlue = false;
+            playerRef.hasRed = false;
+            playerRef.hasGreen = false;
+            playerColour.material = grey;
+            playerRef.index = 0;
             dianalogueRef.text = dialogue1[index];
             dianaRef.texture = dianaHead[index];
             Collected = true;

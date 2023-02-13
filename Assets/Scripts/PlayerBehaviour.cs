@@ -17,8 +17,23 @@ public class PlayerBehaviour : MonoBehaviour
     //We have a health bar script so, we need a ref to it. Enemies use this too. You can use this with anything so like destructible environment?
     public HealthBar healthBar;
 
+    //I need this for the heal over time.
+    private bool isHealing = false;
+
     //This is for tracking the sliding door in the tutorial level, but in theory we could use this for quests that need kills at one point. Get creative!
     public int kills = 0;
+
+    [Range(0, 100)]
+    public int lavaDamage;
+
+    [Range(0.0f, 60.0f)]
+    public float lavaDamageTimeInSeconds;
+
+    [Range(0, 100)]
+    public int hotterLavaDamage;
+
+    [Range(0.0f, 60.0f)]
+    public float hotterLavaDamageTimeInSeconds;
 
     //Our max speed
     public float maxSpeed = 10.0f;
@@ -246,11 +261,14 @@ public class PlayerBehaviour : MonoBehaviour
                 maxSpeed = 10.0f;
             }
 
-            if (index == 4 && abilityControls.action.triggered && currentHealth < maxHealth)
+            if (index == 4 && abilityControls.action.triggered && currentHealth < maxHealth && !isHealing)
             {
-                currentHealth = maxHealth;
-                audioSource.PlayOneShot(healingAudio);
-                healthBar.setHealth(currentHealth);
+                StartCoroutine(Heal());
+
+            }
+            if(index != 4)
+            {
+                StopCoroutine(Heal());
             }
 
 
@@ -280,6 +298,27 @@ public class PlayerBehaviour : MonoBehaviour
             TakeDamage(10);
             
         }
+        if (other.gameObject.CompareTag("Lava"))
+        {
+            StartCoroutine(LavaDamage());
+        }
+        if (other.gameObject.CompareTag("HotterLava"))
+        {
+            StartCoroutine(HotterLavaDamage());
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Lava"))
+        {
+            StopCoroutine(LavaDamage());
+        }
+        if (other.gameObject.CompareTag("HotterLava"))
+        {
+            StopCoroutine(HotterLavaDamage());
+        }
     }
 
     IEnumerator PlayDust()
@@ -289,6 +328,41 @@ public class PlayerBehaviour : MonoBehaviour
         landDust.gameObject.SetActive(false);
 
 
+    }
+
+    IEnumerator LavaDamage()
+    {
+        while(true) {
+            yield return new WaitForSeconds(lavaDamageTimeInSeconds);
+            TakeDamage(lavaDamage);
+            healthBar.setHealth(currentHealth);
+        }
+    }
+
+    IEnumerator HotterLavaDamage()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(hotterLavaDamageTimeInSeconds);
+            TakeDamage(hotterLavaDamage);
+            healthBar.setHealth(currentHealth);
+        }
+    }
+
+    IEnumerator Heal()
+    {
+        //Debug.Log("Begun healing");
+        audioSource.PlayOneShot(healingAudio);
+        while(currentHealth < maxHealth)
+        {
+            //Debug.Log("healing");
+            isHealing = true;
+            currentHealth += 1;
+            healthBar.setHealth(currentHealth);
+            yield return new WaitForSeconds(0.1f);
+        }
+        //Debug.Log("healed");
+        isHealing = false;
     }
 
     void TakeDamage(int damage)

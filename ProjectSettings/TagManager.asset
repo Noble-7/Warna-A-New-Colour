@@ -9,6 +9,8 @@ TagManager:
   - Ledge
   - Bullet
   - Enemy
+  - Lava
+  - HotterLava
   layers:
   - Default
   - TransparentFX

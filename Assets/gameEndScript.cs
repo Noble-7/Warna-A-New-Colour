@@ -25,6 +25,11 @@ public class gameEndScript : MonoBehaviour
 
     private bool Collected = false;
 
+    public Text rednotCollectedText;
+    public Text bluenotCollectedText;
+    public Text purplenotCollectedText;
+    public Text greennotCollectedText;
+
     //This is a reference to the player in the scene.
     public PlayerBehaviour playerRef;
     public Material grey;
@@ -50,6 +55,10 @@ public class gameEndScript : MonoBehaviour
             playerRef.hasBlue = false;
             playerRef.hasRed = false;
             playerRef.hasGreen = false;
+            rednotCollectedText.gameObject.SetActive(true);
+            bluenotCollectedText.gameObject.SetActive(true);
+            purplenotCollectedText.gameObject.SetActive(true);
+            greennotCollectedText.gameObject.SetActive(true);
             playerColour.material = grey;
             playerRef.index = 0;
             dianalogueRef.text = dialogue1[index];

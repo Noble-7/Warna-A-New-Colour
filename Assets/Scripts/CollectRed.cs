@@ -47,7 +47,7 @@ public class CollectRed : MonoBehaviour
             dianaRef.texture = dianaHead[index];
             Collected = true;
             Time.timeScale = 0.0f;
-            Destroy(notCollectedText);
+            notCollectedText.gameObject.SetActive(false);
         }
     }
 

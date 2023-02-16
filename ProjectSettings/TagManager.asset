@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - Lava
   - HotterLava
+  - DianaStation
   layers:
   - Default
   - TransparentFX

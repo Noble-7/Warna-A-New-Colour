@@ -89,14 +89,14 @@ public class RadialMenuController : MonoBehaviour
                     if(angle > i * (360/options.Length) && angle < (i + 1) * (360/options.Length))
                     {
                         //Debug.Log("Segment: " + i);
-                        options[i].color = highlightedColor;
+                        //options[i].color = highlightedColor;
                         selectedOption = i;
 
                         highlightBlock.transform.rotation = Quaternion.Euler(0, 0, i * -(360 / options.Length));
                     }
                     else
                     {
-                        options[i].color = normalColor;
+                        //options[i].color = normalColor;
                     }
                 }
             }
@@ -143,7 +143,7 @@ public class RadialMenuController : MonoBehaviour
                             playerColour.material = Blue;
                         }
                         break;
-                        audioSource.PlayOneShot(pickupAudio);
+                        //audioSource.PlayOneShot(pickupAudio);
                 }
 
                 theMenu.SetActive(false);

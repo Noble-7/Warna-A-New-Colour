@@ -23,6 +23,11 @@ public class PlayerBehaviour : MonoBehaviour
     //This is for tracking the sliding door in the tutorial level, but in theory we could use this for quests that need kills at one point. Get creative!
     public int kills = 0;
 
+
+    //lava true variable
+    private bool isOnLava = false;
+    private bool isVeryOnLava = false;
+
     [Range(0, 100)]
     public int lavaDamage;
 
@@ -266,7 +271,7 @@ public class PlayerBehaviour : MonoBehaviour
                 StartCoroutine(Heal());
 
             }
-            if(index != 4)
+            if (index != 4)
             {
                 StopCoroutine(Heal());
             }
@@ -283,7 +288,8 @@ public class PlayerBehaviour : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Confined;
                 Time.timeScale = 0.0f;
             }
-            else {
+            else
+            {
                 Cursor.visible = false;
                 Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1.0f;
@@ -296,14 +302,16 @@ public class PlayerBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(10);
-            
+
         }
         if (other.gameObject.CompareTag("Lava"))
         {
+            isOnLava = true;
             StartCoroutine(LavaDamage());
         }
         if (other.gameObject.CompareTag("HotterLava"))
         {
+            isVeryOnLava = true;
             StartCoroutine(HotterLavaDamage());
         }
 
@@ -313,10 +321,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Lava"))
         {
+            isOnLava = false;
+
             StopCoroutine(LavaDamage());
         }
         if (other.gameObject.CompareTag("HotterLava"))
         {
+            isVeryOnLava = false; 
             StopCoroutine(HotterLavaDamage());
         }
     }
@@ -332,7 +343,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     IEnumerator LavaDamage()
     {
-        while(true) {
+        while (isOnLava == true)
+        {
             yield return new WaitForSeconds(lavaDamageTimeInSeconds);
             TakeDamage(lavaDamage);
             healthBar.setHealth(currentHealth);
@@ -341,7 +353,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     IEnumerator HotterLavaDamage()
     {
-        while (true)
+        while (isVeryOnLava == true)
         {
             yield return new WaitForSeconds(hotterLavaDamageTimeInSeconds);
             TakeDamage(hotterLavaDamage);
@@ -353,11 +365,13 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //Debug.Log("Begun healing");
         audioSource.PlayOneShot(healingAudio);
-        while(currentHealth < maxHealth)
+        while (currentHealth < maxHealth)
         {
             //Debug.Log("healing");
             isHealing = true;
-            currentHealth += 1;
+
+            //healing value
+            currentHealth += 2;
             healthBar.setHealth(currentHealth);
             yield return new WaitForSeconds(0.1f);
         }
@@ -369,8 +383,10 @@ public class PlayerBehaviour : MonoBehaviour
     {
         currentHealth -= damage;
         healthBar.setHealth(currentHealth);
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
         {
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
             SceneManager.LoadScene("Loss Screen");
         }
     }

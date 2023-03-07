@@ -9,7 +9,7 @@ public class RadialMenuController : MonoBehaviour
     public GameObject theMenu;
 
     public PlayerBehaviour player;
-    public Swinging swinging;
+    //public Swinging swinging;
     public MeshRenderer playerColour;
     public Material Grey, Red, Blue, Green, Purple;
 
@@ -56,12 +56,14 @@ public class RadialMenuController : MonoBehaviour
     void Start()
     {
         //Debug.Log("Radial Menu Start");
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(openRadialMenuControls.action.triggered)
+        selectControl.action.Enable();
+        if (openRadialMenuControls.action.triggered)
         {
             theMenu.SetActive(true);
         }

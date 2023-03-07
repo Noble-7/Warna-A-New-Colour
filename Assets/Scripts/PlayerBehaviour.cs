@@ -139,6 +139,56 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
+    private void Awake()
+    {
+        if (PlayerPrefs.GetInt("usedContinue") != 0)
+        {
+            transform.position = new Vector3(PlayerPrefs.GetFloat("xpos"), PlayerPrefs.GetFloat("ypos"), PlayerPrefs.GetFloat("zpos"));
+            kills = PlayerPrefs.GetInt("kills");
+            dianaDialogue.gameObject.SetActive(false);
+            switch (PlayerPrefs.GetInt("hasRed"))
+            {
+                case 1:
+                    hasRed = true;
+                    break;
+                case 0:
+                    hasRed = false;
+                    break;
+            }
+
+            switch (PlayerPrefs.GetInt("hasBlue"))
+            {
+                case 1:
+                    hasBlue = true;
+                    break;
+                case 0:
+                    hasBlue = false;
+                    break;
+            }
+
+            switch (PlayerPrefs.GetInt("hasGreen"))
+            {
+                case 1:
+                    hasGreen = true;
+                    break;
+                case 0:
+                    hasGreen = false;
+                    break;
+            }
+
+            switch (PlayerPrefs.GetInt("hasPurple"))
+            {
+                case 1:
+                    hasPurple = true;
+                    break;
+                case 0:
+                    hasPurple = false;
+                    break;
+            }
+
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -148,6 +198,7 @@ public class PlayerBehaviour : MonoBehaviour
 
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
+       
     }
 
     // Update is called once per frame

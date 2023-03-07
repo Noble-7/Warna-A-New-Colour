@@ -7,20 +7,16 @@ public class BulletBehaviour : MonoBehaviour
 
     public int damage = 20;
 
-    
 
-    // Start is called before the first frame update
-    void Start()
+
+    private void OnCollisionEnter(Collision other)
     {
-        
+        if (!other.gameObject.CompareTag("Player") || !other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
-
-    
 
 }

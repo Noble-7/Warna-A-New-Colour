@@ -263,16 +263,19 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
             //shootin
-            if (index == 1 && abilityControls.action.triggered)
+            if (index == 1)
             {
-                GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
-                audioSource.PlayOneShot(shootingAudio);
-                //Debug.Log(cam.rotation.y);
-                Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
-                instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
-                //Debug.Log(cam.forward);
-                Destroy(instBullet, 3.0f);
-
+                
+                if (abilityControls.action.triggered)
+                {
+                    GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
+                    audioSource.PlayOneShot(shootingAudio);
+                    //Debug.Log(cam.rotation.y);
+                    Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
+                    instBulletRigidBody.AddForce(new Vector3(cam.forward.x, 0, cam.forward.z) * bulletSpeed);
+                    //Debug.Log(cam.forward);
+                    Destroy(instBullet, 3.0f);
+                }
             }
 
             // jumping

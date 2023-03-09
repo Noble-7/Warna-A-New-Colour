@@ -313,11 +313,15 @@ public class PlayerBehaviour : MonoBehaviour
 
             if (index == 3)
             {
-                maxSpeed = 15.0f;
+                //Leftovers from a simpler time
+                //maxSpeed = 15.0f;
+                Physics.IgnoreLayerCollision(6, 12, true);
             }
             else
             {
-                maxSpeed = 10.0f;
+                //Leftovers from a simpler time
+                //maxSpeed = 10.0f;
+                Physics.IgnoreLayerCollision(6, 12, false);
             }
 
             if (index == 4 && abilityControls.action.triggered && currentHealth < maxHealth && !isHealing)

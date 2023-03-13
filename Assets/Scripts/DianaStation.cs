@@ -50,7 +50,7 @@ public class DianaStation : MonoBehaviour
             if (selectControl.action.triggered)
             {
                 Debug.Log("SelectControl was clicked");
-                //audioSource.PlayOneShot(pickupAudio);
+                audioSource.PlayOneShot(pickupAudio);
                 canvasRef.gameObject.SetActive(true);
                 CanvasTextReference.text = dialogue[index];
                 CanvasImageReference.texture = dianaHead[index];
@@ -78,7 +78,7 @@ public class DianaStation : MonoBehaviour
                 if (selectControl.action.triggered)
                 {
                     Debug.Log("SelectControl was clicked");
-                    //audioSource.PlayOneShot(pickupAudio);
+                    audioSource.PlayOneShot(pickupAudio);
                     canvasRef.gameObject.SetActive(true);
                     CanvasTextReference.text = dialogue[index];
                     CanvasImageReference.texture = dianaHead[index];

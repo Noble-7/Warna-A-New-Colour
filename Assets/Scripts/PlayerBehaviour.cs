@@ -269,6 +269,7 @@ public class PlayerBehaviour : MonoBehaviour
                 if (abilityControls.action.triggered)
                 {
                     GameObject instBullet = Instantiate(bullet, transform.position, Quaternion.Euler(0, cam.rotation.eulerAngles.y, 0)) as GameObject;
+                    audioSource.pitch = 1.0f;
                     audioSource.PlayOneShot(shootingAudio);
                     //Debug.Log(cam.rotation.y);
                     Rigidbody instBulletRigidBody = instBullet.GetComponent<Rigidbody>();
@@ -282,13 +283,17 @@ public class PlayerBehaviour : MonoBehaviour
             if (jumpControl.action.triggered && isGrounded && !isGrappling)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+                audioSource.pitch = (Random.Range(0.8f, 0.9f));
                 audioSource.PlayOneShot(jumpAudio);
+                //audioSource.pitch = 1.0f;
 
             }
             if (jumpControl.action.triggered && index == 2 && !hasDoubleJumped && !isGrounded)
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
+                audioSource.pitch = (Random.Range(1.1f, 1.2f));
                 audioSource.PlayOneShot(jumpAudio);
+                //audioSource.pitch = 1.0f;
                 hasDoubleJumped = true;
             }
 
@@ -422,6 +427,7 @@ public class PlayerBehaviour : MonoBehaviour
     IEnumerator Heal()
     {
         //Debug.Log("Begun healing");
+        audioSource.pitch = 1.0f;
         audioSource.PlayOneShot(healingAudio);
         while (currentHealth < maxHealth)
         {

@@ -31,6 +31,15 @@ public class CollectRed : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickupAudio;
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("hasRed") == 1)
+        {
+
+            notCollectedText.gameObject.SetActive(false);
+        }
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {

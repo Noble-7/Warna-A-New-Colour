@@ -31,6 +31,14 @@ public class CollectPurple : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickupAudio;
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("hasPurple") == 1)
+        {
+
+            notCollectedText.gameObject.SetActive(false);
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {

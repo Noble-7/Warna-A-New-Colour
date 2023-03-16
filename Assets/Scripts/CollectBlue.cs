@@ -32,6 +32,15 @@ public class CollectBlue : MonoBehaviour
     public AudioClip pickupAudio;
 
 
+    private void Start()
+    {
+        if (PlayerPrefs.GetInt("hasBlue") == 1)
+        {
+
+            notCollectedText.gameObject.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("OnTrigger works");

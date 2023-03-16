@@ -187,6 +187,19 @@ public class PlayerBehaviour : MonoBehaviour
             }
 
         }
+        else
+        {
+            kills = 0;
+            hasBlue = false;
+            hasRed = false;
+            hasGreen = false;
+            hasPurple = false;
+            PlayerPrefs.SetInt("hasBlue", 0);
+            PlayerPrefs.SetInt("hasRed", 0);
+            PlayerPrefs.SetInt("hasGreen", 0);
+            PlayerPrefs.SetInt("hasPurple", 0);
+            PlayerPrefs.SetInt("kills", 0);
+        }
     }
 
     // Start is called before the first frame update

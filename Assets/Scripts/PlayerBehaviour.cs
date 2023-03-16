@@ -115,6 +115,8 @@ public class PlayerBehaviour : MonoBehaviour
     public bool hasPurple = false;
     public bool hasGreen = false;
 
+    public Animator wheelsAnimation;
+    public Animator wheelsAnimation1;
 
 
     private void OnEnable()
@@ -270,9 +272,15 @@ public class PlayerBehaviour : MonoBehaviour
 
                 Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
                 controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
+                wheelsAnimation.enabled = true;
+                wheelsAnimation1.enabled = true;
 
 
-
+            }
+            else
+            {
+                wheelsAnimation.enabled = false;
+                wheelsAnimation1.enabled = false;
             }
 
             //shootin

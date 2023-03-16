@@ -38,6 +38,8 @@ public class DianaStation : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickupAudio;
 
+    public TextMeshProUGUI interactText;
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,6 +48,7 @@ public class DianaStation : MonoBehaviour
         {
             //Debug.Log("Recognized as player, selectControl being enabled");
             selectControl.action.Enable();
+            interactText.gameObject.SetActive(true);
             isInRange = true;
             if (selectControl.action.triggered)
             {
@@ -66,6 +69,7 @@ public class DianaStation : MonoBehaviour
         {
             selectControl.action.Disable();
             isInRange = false;
+            interactText.gameObject.SetActive(false);
         }
     }
 
@@ -87,6 +91,7 @@ public class DianaStation : MonoBehaviour
 
             }
             else {
+                interactText.gameObject.SetActive(false);
                 if (selectControl.action.triggered)
                 {
                     index++;

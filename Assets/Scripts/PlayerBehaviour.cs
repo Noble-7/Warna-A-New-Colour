@@ -72,6 +72,8 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject pauseMenu;
     //obligatory rigidbody moment
     public Rigidbody rb;
+    //Needed for phase to work
+    public Collider nose;
 
     //All our input objects, cause yay I guess
     [SerializeField]
@@ -395,28 +397,36 @@ public class PlayerBehaviour : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Colliding with" + other.gameObject);
+        
         if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {
-            Debug.Log("Colliding with wall");
+           
             if (index == 3)
             {
-                Debug.Log("Colliding with wall while phase is equipped");
-                Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponentInChildren<Collider>(), true);
-                Debug.Log("Ignoring collision");
+                other.gameObject.GetComponent<MeshCollider>().convex = true;
+                other.gameObject.GetComponent<Collider>().isTrigger = true;
+                Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>(), true);
+                Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), nose, true);
+               
+                
             }
         }
     }
 
-    void OnCollisionExit(Collider other)
-    {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
-        {           
-                Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponent<Collider>(), false);           
-        }
-    }
+    //void OnCollisionExit(Collision other)
+    //{
+       
+    //    if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+    //    {
+           
+    //        Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>(), false);
+    //        Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), nose, false);
+            
+           
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {
@@ -440,6 +450,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("OnTriggerExit");
         if (other.gameObject.CompareTag("Lava"))
         {
             isOnLava = false;
@@ -450,6 +461,16 @@ public class PlayerBehaviour : MonoBehaviour
         {
             isVeryOnLava = false; 
             StopCoroutine(HotterLavaDamage());
+        }
+        if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            Debug.Log("Exited wall");
+            other.gameObject.GetComponent<Collider>().isTrigger = false;
+            other.gameObject.GetComponent<MeshCollider>().convex = false;
+            Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>(), false);
+            Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), nose, false);
+            Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>()));
+            Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), nose));
         }
     }
 

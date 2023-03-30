@@ -31,7 +31,6 @@ public class CollectBlue : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip pickupAudio;
 
-
     private void Start()
     {
         if (PlayerPrefs.GetInt("hasBlue") == 1)

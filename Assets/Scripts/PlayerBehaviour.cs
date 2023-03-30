@@ -341,13 +341,15 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 //Leftovers from a simpler time
                 //maxSpeed = 15.0f;
-                Physics.IgnoreLayerCollision(6, 12, true);
+                Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Bullet"), LayerMask.NameToLayer("Wall"), true);
+                //Debug.Log("Ignoring layers");
             }
             else
             {
                 //Leftovers from a simpler time
                 //maxSpeed = 10.0f;
-                Physics.IgnoreLayerCollision(6, 12, false);
+                Physics.IgnoreLayerCollision(LayerMask.NameToLayer("Bullet"), LayerMask.NameToLayer("Wall"), false);
+                //Debug.Log("No longer ignoring layers");
             }
 
             if (index == 4 && abilityControls.action.triggered && currentHealth < maxHealth && !isHealing)
@@ -378,6 +380,29 @@ public class PlayerBehaviour : MonoBehaviour
                 Cursor.lockState = CursorLockMode.Locked;
                 Time.timeScale = 1.0f;
             }
+        }
+    }
+
+    private void onCollisionEnter(Collider other)
+    {
+        Debug.Log("Colliding with" + other.gameObject);
+        if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {
+            Debug.Log("Colliding with wall");
+            if (index == 3)
+            {
+                Debug.Log("Colliding with wall while phase is equipped");
+                Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponentInChildren<Collider>(), true);
+                Debug.Log("Ignoring collision");
+            }
+        }
+    }
+
+    private void onCollisionExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        {           
+                Physics.IgnoreCollision(other.GetComponent<Collider>(), GetComponent<Collider>(), false);           
         }
     }
 

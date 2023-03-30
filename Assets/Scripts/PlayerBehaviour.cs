@@ -390,9 +390,12 @@ public class PlayerBehaviour : MonoBehaviour
                 Time.timeScale = 1.0f;
             }
         }
+
+        
+
     }
 
-    private void onCollisionEnter(Collider other)
+    void OnCollisionEnter(Collider other)
     {
         Debug.Log("Colliding with" + other.gameObject);
         if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
@@ -407,7 +410,7 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
-    private void onCollisionExit(Collider other)
+    void OnCollisionExit(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Wall"))
         {           

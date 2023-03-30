@@ -117,6 +117,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public Animator wheelsAnimation;
     public Animator wheelsAnimation1;
+    public Animator armsAnimation;
+    public Animator armsAnimation1;
+    public Animator idleAnimation;
 
 
     private void OnEnable()
@@ -274,6 +277,7 @@ public class PlayerBehaviour : MonoBehaviour
                 controller.Move(moveDir.normalized * maxSpeed * Time.deltaTime);
                 wheelsAnimation.enabled = true;
                 wheelsAnimation1.enabled = true;
+                idleAnimation.SetInteger("AnimState", 1);
 
 
             }
@@ -281,6 +285,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 wheelsAnimation.enabled = false;
                 wheelsAnimation1.enabled = false;
+                idleAnimation.SetInteger("AnimState", 0);
             }
 
             //shootin
@@ -306,6 +311,7 @@ public class PlayerBehaviour : MonoBehaviour
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
                 audioSource.pitch = (Random.Range(0.8f, 0.9f));
                 audioSource.PlayOneShot(jumpAudio);
+                StartCoroutine(JumpAnim());
                 //audioSource.pitch = 1.0f;
 
             }
@@ -316,6 +322,7 @@ public class PlayerBehaviour : MonoBehaviour
                 audioSource.PlayOneShot(jumpAudio);
                 //audioSource.pitch = 1.0f;
                 hasDoubleJumped = true;
+                StartCoroutine(JumpAnim());
             }
 
             if (!isGrappling)
@@ -331,9 +338,11 @@ public class PlayerBehaviour : MonoBehaviour
 
                 if (isGrounded == true)
                 {
+                    
                     //audioSource.PlayOneShot(landAudio);
                     StartCoroutine(PlayDust());
                     hasDoubleJumped = false;
+                    StopCoroutine(JumpAnim());
                 }
             }
 
@@ -487,6 +496,15 @@ public class PlayerBehaviour : MonoBehaviour
         }
         //Debug.Log("healed");
         isHealing = false;
+    }
+
+    IEnumerator JumpAnim()
+    {
+        armsAnimation.enabled = true;
+        armsAnimation1.enabled = true;
+        yield return new WaitForSeconds(1.5f);
+        armsAnimation.enabled = false;
+        armsAnimation1.enabled = false;
     }
 
     void TakeDamage(int damage)

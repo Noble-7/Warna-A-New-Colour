@@ -363,6 +363,17 @@
                 },
                 {
                     "name": "",
+                    "id": "68ac66a3-c554-4a5b-89fd-32566b1f0508",
+                    "path": "<VirtualMouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "MousePosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "be414f27-2fc8-4193-84f4-78e3ae6e689a",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
@@ -376,6 +387,17 @@
                     "name": "",
                     "id": "8296c965-0017-41ca-bf78-a64426636e99",
                     "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Select",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "665f8b35-fb40-4b48-8577-feadc51865db",
+                    "path": "<VirtualMouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -432,6 +454,11 @@
                 {
                     "devicePath": "<Gamepad>",
                     "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<VirtualMouse>",
+                    "isOptional": true,
                     "isOR": false
                 }
             ]

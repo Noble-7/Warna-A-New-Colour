@@ -402,7 +402,7 @@ public class PlayerBehaviour : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         
-        if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Phase"))
         {
            
             if (index == 3)
@@ -464,7 +464,7 @@ public class PlayerBehaviour : MonoBehaviour
             isVeryOnLava = false; 
             StopCoroutine(HotterLavaDamage());
         }
-        if(other.gameObject.layer == LayerMask.NameToLayer("Wall"))
+        if(other.gameObject.layer == LayerMask.NameToLayer("Phase"))
         {
             Debug.Log("Exited wall");
             other.gameObject.GetComponent<Collider>().isTrigger = false;

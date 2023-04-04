@@ -375,7 +375,7 @@
                 {
                     "name": "",
                     "id": "8296c965-0017-41ca-bf78-a64426636e99",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -387,6 +387,17 @@
                     "name": "",
                     "id": "9a6b1107-4743-4e56-b3d2-b8361d7093fb",
                     "path": "<Keyboard>/p",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eed0e46c-035e-4865-854f-9aa7e37c288e",
+                    "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

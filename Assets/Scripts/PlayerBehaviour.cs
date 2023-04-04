@@ -312,6 +312,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
                 audioSource.pitch = (Random.Range(0.8f, 0.9f));
+                audioSource.volume = 0.3f;
                 audioSource.PlayOneShot(jumpAudio);
                 StartCoroutine(JumpAnim());
                 //audioSource.pitch = 1.0f;
@@ -321,6 +322,7 @@ public class PlayerBehaviour : MonoBehaviour
             {
                 velocity.y = Mathf.Sqrt(jumpHeight * -2.0f * gravity);
                 audioSource.pitch = (Random.Range(1.1f, 1.2f));
+                audioSource.volume = 0.3f;
                 audioSource.PlayOneShot(jumpAudio);
                 //audioSource.pitch = 1.0f;
                 hasDoubleJumped = true;
@@ -507,6 +509,7 @@ public class PlayerBehaviour : MonoBehaviour
     {
         //Debug.Log("Begun healing");
         audioSource.pitch = 1.0f;
+        audioSource.volume = 0.6f;
         audioSource.PlayOneShot(healingAudio);
         while (currentHealth < maxHealth)
         {

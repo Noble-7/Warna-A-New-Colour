@@ -344,8 +344,8 @@ MonoBehaviour:
   currentHealth: 50
   healthBar: {fileID: 7178305592753236588}
   audioSource: {fileID: 8069504606610806490}
-  enemyHitAudio: {fileID: 8300000, guid: 0b86166b3a1fda748bfffa07747097d4, type: 3}
-  enemyDeathAudio: {fileID: 8300000, guid: 6e252847e5a926b44bbfcc879386399a, type: 3}
+  enemyHitAudio: {fileID: 8300000, guid: 02cbdfcc278254b4591c9f2a56740cdd, type: 3}
+  enemyDeathAudio: {fileID: 8300000, guid: b444708d05b5f6c41b39ade7a8736504, type: 3}
 --- !u!136 &3990249875592812939
 CapsuleCollider:
   m_ObjectHideFlags: 0

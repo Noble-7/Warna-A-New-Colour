@@ -92,9 +92,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5606724381510947036}
-  - component: {fileID: 5606724381510947042}
   - component: {fileID: 5606724381510947037}
   - component: {fileID: 6533764112604223953}
+  - component: {fileID: 418476475}
   m_Layer: 0
   m_Name: locked door
   m_TagString: Untagged
@@ -109,9 +109,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5606724381510947039}
-  m_LocalRotation: {x: -0, y: 0.7615394, z: -0, w: 0.6481186}
+  m_LocalRotation: {x: 0, y: 0.76153827, z: 0, w: 0.6481199}
   m_LocalPosition: {x: -97.73, y: 61.51, z: 373.81}
-  m_LocalScale: {x: 1.0789245, y: 1.3479965, z: 0.72586507}
+  m_LocalScale: {x: 1.0789245, y: 1.3479965, z: 0.7258651}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5606724382685019478}
@@ -119,23 +119,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 99.2, z: 0}
---- !u!114 &5606724381510947042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5606724381510947039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb14ed5e09654f4f887fd4c28a0d261, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  doorOpenAudio: {fileID: 8300000, guid: 08d70b9220f33ee459054bb4aaaa3319, type: 3}
-  audioSource: {fileID: 6533764112604223953}
-  isOpen: 0
-  playerRef: {fileID: 0}
-  numKillsToOpen: 3
 --- !u!65 &5606724381510947037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -245,6 +228,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &418476475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5606724381510947039}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd02a1c1768badc44884f9068fb7b53e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorOpenAudio: {fileID: 8300000, guid: 08d70b9220f33ee459054bb4aaaa3319, type: 3}
+  audioSource: {fileID: 6533764112604223953}
+  isOpen: 0
+  playerRef: {fileID: 0}
 --- !u!1 &5606724382685019468
 GameObject:
   m_ObjectHideFlags: 0
@@ -350,7 +349,7 @@ MonoBehaviour:
   - m_Indexes: 0c0000000d0000000e0000000d0000000f0000000e000000
     m_SmoothingGroup: 0
     m_Uv:
-      m_UseWorldSpace: 0
+      m_UseWorldSpace: 1
       m_FlipU: 0
       m_FlipV: 0
       m_SwapUV: 0
@@ -446,10 +445,10 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 2, y: 8}
   - {x: 0, y: 8}
-  - {x: 0, y: 0}
-  - {x: -16, y: 0}
-  - {x: 0, y: 8}
-  - {x: -16, y: 8}
+  - {x: 156.70471, y: 61.584538}
+  - {x: 144.37636, y: 61.584538}
+  - {x: 156.70471, y: 72.36851}
+  - {x: 144.37636, y: 72.36851}
   - {x: 0, y: 16}
   - {x: 2, y: 16}
   - {x: 0, y: 0}
@@ -494,7 +493,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 1045
+  m_VersionIndex: 1049
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -546,7 +545,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 288c097816567f14bb742e5033ec261c, type: 2}
+  - {fileID: 2100000, guid: 0289959fc43e81940b8b48e0581c7c99, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

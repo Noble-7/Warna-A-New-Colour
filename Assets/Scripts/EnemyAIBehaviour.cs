@@ -40,11 +40,12 @@ public class EnemyAIBehaviour : MonoBehaviour
 
         Ray sphereRay = new Ray(transform.TransformDirection(Vector3.forward), transform.position);
 
-        //Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, ~layerMask)
+        
 
-        
-        
-        if (Physics.SphereCast(sphereRay, 10, out hit, 20, ~layerMask))
+        //Physics.SphereCast(sphereRay, 10, out hit, 20, ~layerMask)
+
+
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, ~layerMask))
         {
             
             //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);

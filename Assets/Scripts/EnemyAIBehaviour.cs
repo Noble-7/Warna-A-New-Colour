@@ -33,7 +33,7 @@ public class EnemyAIBehaviour : MonoBehaviour
     void FixedUpdate()
     {
 
-        int layerMask = 6;
+        LayerMask layerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, layerMask))

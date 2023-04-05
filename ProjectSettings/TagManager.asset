@@ -12,6 +12,8 @@ TagManager:
   - Lava
   - HotterLava
   - DianaStation
+  - Turret
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -27,7 +29,7 @@ TagManager:
   - Wall
   - AI Walkable
   - Phase
-  - 
+  - EnemyBullet
   - 
   - 
   - 

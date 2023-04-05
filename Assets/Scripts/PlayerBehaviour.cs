@@ -94,6 +94,7 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioClip landAudio;
     public AudioClip healingAudio;
     public AudioClip shootingAudio;
+    public AudioClip damageAudio;
     public AudioSource audioSource;
 
     //This is for... Something, probably. (I checked, this is essentially a weird subset of isgrounded used for the landDust)
@@ -122,6 +123,8 @@ public class PlayerBehaviour : MonoBehaviour
     public Animator armsAnimation;
     public Animator armsAnimation1;
     public Animator idleAnimation;
+
+    public bool hasKey;
 
 
     private void OnEnable()
@@ -436,6 +439,12 @@ public class PlayerBehaviour : MonoBehaviour
         {
             TakeDamage(10);
 
+        }
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            TakeDamage(10);
+            Destroy(other);
+            audioSource.PlayOneShot(damageAudio);
         }
         if (other.gameObject.CompareTag("Lava"))
         {

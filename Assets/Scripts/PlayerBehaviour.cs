@@ -461,7 +461,7 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("OnTriggerExit");
+        //Debug.Log("OnTriggerExit");
         if (other.gameObject.CompareTag("Lava"))
         {
             isOnLava = false;
@@ -475,13 +475,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
         if(other.gameObject.layer == LayerMask.NameToLayer("Phase"))
         {
-            Debug.Log("Exited wall");
+            //Debug.Log("Exited wall");
             other.gameObject.GetComponent<Collider>().isTrigger = false;
             other.gameObject.GetComponent<MeshCollider>().convex = false;
             Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>(), false);
             Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), nose, false);
-            Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>()));
-            Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), nose));
+            //Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>()));
+            //Debug.Log(Physics.GetIgnoreCollision(other.gameObject.GetComponent<Collider>(), nose));
         }
     }
 

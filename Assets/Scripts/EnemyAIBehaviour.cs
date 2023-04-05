@@ -27,6 +27,7 @@ public class EnemyAIBehaviour : MonoBehaviour
     {
         currentHealth = maxHealth;
         healthBar.setMaxHealth(maxHealth);
+        playerRef = FindObjectOfType<PlayerBehaviour>();
     }
 
 
@@ -36,16 +37,24 @@ public class EnemyAIBehaviour : MonoBehaviour
         LayerMask layerMask = ~(1 << LayerMask.NameToLayer("Player"));
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, layerMask))
+
+        Ray sphereRay = new Ray(transform.TransformDirection(Vector3.forward), transform.position);
+
+        //Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, 20, ~layerMask)
+
+        
+        
+        if (Physics.SphereCast(sphereRay, 10, out hit, 20, ~layerMask))
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            Debug.Log("Did hit");
+            
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+            //Debug.Log("Did hit: " + hit.transform.name);
             agent.SetDestination(playerRef.transform.position);
         }
         else
         {
-            Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 20, Color.white);
-            Debug.Log("Did not hit");
+            //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 20, Color.white);
+            //Debug.Log("Did not hit");
             //agent.SetDestination(playerRef.transform.position);
         }
         

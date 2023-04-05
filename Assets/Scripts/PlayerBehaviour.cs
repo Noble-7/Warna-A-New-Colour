@@ -353,6 +353,7 @@ public class PlayerBehaviour : MonoBehaviour
                 }
             }
 
+            //not this for particles
             if (index == 3)
             {
                 //Leftovers from a simpler time

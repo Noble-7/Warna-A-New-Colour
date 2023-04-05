@@ -21,6 +21,8 @@ public class turretBehaviour : MonoBehaviour
 
     private PlayerBehaviour playerRef;
 
+    private int currentHealth = 30;
+
     private void Start()
     {
         playerRef = FindObjectOfType<PlayerBehaviour>();
@@ -41,6 +43,15 @@ public class turretBehaviour : MonoBehaviour
             transform.LookAt(playerRef.transform.position);
             isShooting = true;
             StartCoroutine(Fire());
+        }
+
+        if (other.CompareTag("Bullet"))
+        {
+            currentHealth -= 10;
+            if (currentHealth <= 0)
+            {
+                Destroy(this);
+            }
         }
     }
 

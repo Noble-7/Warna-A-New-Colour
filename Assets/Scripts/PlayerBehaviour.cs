@@ -93,6 +93,7 @@ public class PlayerBehaviour : MonoBehaviour
     public AudioClip jumpAudio;
     public AudioClip landAudio;
     public AudioClip healingAudio;
+    public AudioClip phaseAudio;
     public AudioClip shootingAudio;
     public AudioClip damageAudio;
     public AudioSource audioSource;
@@ -415,8 +416,8 @@ public class PlayerBehaviour : MonoBehaviour
                 other.gameObject.GetComponent<Collider>().isTrigger = true;
                 Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), rb.GetComponent<Collider>(), true);
                 Physics.IgnoreCollision(other.gameObject.GetComponent<Collider>(), nose, true);
-               
-                
+
+                audioSource.PlayOneShot(phaseAudio);
             }
         }
     }

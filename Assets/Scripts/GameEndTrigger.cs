@@ -18,6 +18,8 @@ public class GameEndTrigger : MonoBehaviour
         {
             if (playerRef.hasBlue == true && playerRef.hasRed == true && playerRef.hasGreen == true && playerRef.hasPurple == true)
             {
+                Cursor.visible = true;
+                Cursor.lockState = CursorLockMode.Confined;
                 SceneManager.LoadScene("Game Over!");
             }
         }

@@ -9,7 +9,7 @@ public class KeyBehaviour : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             other.GetComponent<PlayerBehaviour>().hasKey = true;
-            Destroy(this);
+            this.gameObject.SetActive(false);
         }
     }
 }

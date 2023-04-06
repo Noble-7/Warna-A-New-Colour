@@ -499,20 +499,20 @@ public class PlayerBehaviour : MonoBehaviour
     IEnumerator LavaDamage()
     {
         while (isOnLava == true)
-        {
-            yield return new WaitForSeconds(lavaDamageTimeInSeconds);
+        {            
             TakeDamage(lavaDamage);
             healthBar.setHealth(currentHealth);
+            yield return new WaitForSeconds(lavaDamageTimeInSeconds);
         }
     }
 
     IEnumerator HotterLavaDamage()
     {
         while (isVeryOnLava == true)
-        {
-            yield return new WaitForSeconds(hotterLavaDamageTimeInSeconds);
+        {            
             TakeDamage(hotterLavaDamage);
             healthBar.setHealth(currentHealth);
+            yield return new WaitForSeconds(hotterLavaDamageTimeInSeconds);
         }
     }
 

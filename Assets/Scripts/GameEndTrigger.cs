@@ -12,7 +12,7 @@ public class GameEndTrigger : MonoBehaviour
         playerRef = FindObjectOfType<PlayerBehaviour>();
     }
 
-private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {
@@ -23,7 +23,7 @@ private void OnTriggerEnter(Collider other)
         }
     }
 
-    }
+}
 
 
 

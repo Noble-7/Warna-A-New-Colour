@@ -88,6 +88,8 @@ public class PlayerBehaviour : MonoBehaviour
     private InputActionReference cameraControls;
     [SerializeField]
     private InputActionReference pauseControls;
+    [SerializeField]
+    private InputActionReference returnControls;
 
     //Anytime we have new audio we'll need it in here.
     public AudioClip jumpAudio;
@@ -136,6 +138,7 @@ public class PlayerBehaviour : MonoBehaviour
         abilityControls.action.Enable();
         cameraControls.action.Enable();
         pauseControls.action.Enable();
+        returnControls.action.Enable();
 
     }
 
@@ -147,6 +150,7 @@ public class PlayerBehaviour : MonoBehaviour
         abilityControls.action.Disable();
         cameraControls.action.Disable();
         pauseControls.action.Disable();
+        returnControls.action.Disable();
 
     }
 
@@ -383,8 +387,17 @@ public class PlayerBehaviour : MonoBehaviour
 
 
         }
+        else
+        {
+            Debug.Log("we is paused");
+            if (returnControls.action.triggered)
+            {
+                SceneManager.LoadScene("Title Screen");
+            }
+        }
         if (pauseControls.action.triggered)
         {
+            Debug.Log("Paused");
             pauseMenu.SetActive(!pauseMenu.activeInHierarchy);
             if (pauseMenu.activeInHierarchy)
             {

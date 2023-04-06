@@ -50,7 +50,7 @@ public class turretBehaviour : MonoBehaviour
             currentHealth -= 10;
             if (currentHealth <= 0)
             {
-                Destroy(this);
+                gameObject.SetActive(false);
             }
         }
     }
